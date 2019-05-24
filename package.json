@@ -22,8 +22,10 @@
     "@angular/platform-browser": "~7.0.0",
     "@angular/platform-browser-dynamic": "~7.0.0",
     "@angular/router": "~7.0.0",
+    "@auth0/angular-jwt": "^2.1.0",
     "core-js": "^2.5.4",
-    "rxjs": "~6.3.3",
+    "httpclient": "^0.1.0",
+    "rxjs": "^6.3.3",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {
@@ -46,5 +48,9 @@
     "ts-node": "~7.0.0",
     "tslint": "~5.11.0",
     "typescript": "~3.1.1"
-  }
+  },
+  "description": "Aplikacja do komponowania przepisów",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC"
 }
