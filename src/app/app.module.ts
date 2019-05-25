@@ -13,6 +13,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { OverlayModule } from '@angular/cdk/overlay';
+import { HomeComponent } from './home/home.component';
+import { AuthGuardService } from './services/auth-guard.service';
 
 const MaterialModules = [
   MatToolbarModule,
@@ -32,7 +34,8 @@ const MaterialModules = [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    NavbarComponent
+    NavbarComponent,
+    HomeComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -46,9 +49,12 @@ const MaterialModules = [
     OverlayModule,
     RouterModule.forRoot([
       { path: 'login', component: LoginComponent },
-      { path: 'register', component: RegisterComponent }
+      { path: 'register', component: RegisterComponent },
+      { path: '', canActivate: [AuthGuardService], component: HomeComponent }
     ]),
   ],
+
+
   providers: [],
   bootstrap: [AppComponent]
 })
