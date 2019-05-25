@@ -40,14 +40,12 @@ export class LoginComponent implements OnInit {
     const formValue = this.loginForm.value;
     this.loginService.login(formValue.username, formValue.password).subscribe((res) => {
       if (res.token) {
-        this.router.navigate(['/home']);
+        this.router.navigate(['/']);
       }}, (error: HttpErrorResponse) => {
         this.snackBar.open(error.error.message, 'OK', {
           duration: 3000
         });
       });
   }
-
-
 }
 
