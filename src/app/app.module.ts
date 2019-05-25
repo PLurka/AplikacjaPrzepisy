@@ -14,8 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { HomeComponent } from './home/home.component';
-import { Routes, CanActivate } from '@angular/router';
-import {AuthGuardService} from './services/auth-guard.service';
+import { AuthGuardService } from './services/auth-guard.service';
 
 const MaterialModules = [
   MatToolbarModule,
@@ -49,13 +48,13 @@ const MaterialModules = [
     FormsModule,
     OverlayModule,
     RouterModule.forRoot([
-      { path: 'login', component: LoginComponent},
-      { path: 'register', component: RegisterComponent},
-      { path: 'home',canActivate: [AuthGuardService], component: HomeComponent }
+      { path: 'login', component: LoginComponent },
+      { path: 'register', component: RegisterComponent },
+      { path: '', canActivate: [AuthGuardService], component: HomeComponent }
     ]),
   ],
 
-  
+
   providers: [],
   bootstrap: [AppComponent]
 })
