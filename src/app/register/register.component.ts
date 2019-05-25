@@ -64,7 +64,7 @@ export class RegisterComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          this.snackBar.open('you create a new account', 'OK', {
+          this.snackBar.open('Pomyślnie utworzyłeś konto', 'OK', {
             duration: 3000
           });
           this.router.navigate(['/login']);
