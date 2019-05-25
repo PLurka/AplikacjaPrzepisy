@@ -1,31 +1,82 @@
 <div class="container">
-  <mat-toolbar color="primary">
-    <span>Rejestracja</span>
-  </mat-toolbar>
-  <mat-card class="example-card">
-    <mat-card-content>
-      <div class="form-container">
-        <mat-form-field>
-          <input matInput type="text" placeholder="Nick" />
-        </mat-form-field>
+    <mat-toolbar color="primary">
+      <span>Rejestracja</span>
+    </mat-toolbar>
+    <mat-card class="example-card">
+      <mat-card-content>
+        <form
+          class="form-container"
+          [formGroup]="registerForm"
+          (ngSubmit)="onSubmit()"
+        >
+          <mat-form-field>
+            <input
+              matInput
+              formControlName="username"
+              placeholder="Nick użytkownika"
+              type="text"
+            />
+          </mat-form-field>
 
-        <mat-form-field>
-          <input matInput placeholder="Hasło" type="password" />
-        </mat-form-field>
+          <mat-form-field>
+              <input
+                matInput
+                formControlName="name"
+                placeholder="Imie"
+                type="text"
+              />
+            </mat-form-field>
+           
+            <mat-form-field>
+                <input
+                  matInput
+                  formControlName="surname"
+                  placeholder="Nazwisko"
+                  type="text"
+                />
+              </mat-form-field>
+            
+              <mat-form-field>
+                  <input
+                    matInput
+                    formControlName="email"
+                    placeholder="E-mail"
+                    type="text"
+                  />
+                </mat-form-field>
+              
+  
+          <mat-form-field>
+            <input
+              matInput
+              formControlName="password"
+              placeholder="Hasło"
+              type="password"
+              autocomplete="off"
+            />
+          </mat-form-field>
 
-        <mat-form-field>
-          <input matInput placeholder="Potwierdź hasło" type="password" />
-        </mat-form-field>
-
-        <mat-form-field>
-          <input matInput type="email" placeholder="E-mail" />
-        </mat-form-field>
-
-      </div>
-    </mat-card-content>
-
-    <mat-card-actions>
-      <button mat-stroked-button color="accent">ZAREJESTRUJ SIĘ</button>
-    </mat-card-actions>
-  </mat-card>
-</div>
+          <mat-form-field>
+              <input
+                matInput
+                formControlName="confirmPassword"
+                placeholder="Potwierdz haslo"
+                type="password"
+                autocomplete="off"
+              />
+            </mat-form-field>
+            
+          <button
+            mat-raised-button
+            color="primary"
+            type="submit"
+            style="margin: 10px auto; width: 30%;"
+            [disabled]="registerForm.invalid"
+          >
+            ZAREJESTRUJ SIE
+          </button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  

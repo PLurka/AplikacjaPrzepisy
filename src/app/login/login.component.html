@@ -3,28 +3,49 @@
     <span>Logowanie</span>
   </mat-toolbar>
   <mat-card class="example-card">
-    <mat-card-header>
-      <mat-card-subtitle style="margin-left:-15px"> </mat-card-subtitle>
-    </mat-card-header>
     <mat-card-content>
-      <div class="form-container">
+      <form
+        class="form-container"
+        [formGroup]="loginForm"
+        (ngSubmit)="onSubmit()"
+      >
         <mat-form-field>
-          <input matInput placeholder="Nick użytkownika" />
+          <input
+            matInput
+            formControlName="username"
+            placeholder="Nick użytkownika"
+            type="text"
+          />
         </mat-form-field>
 
         <mat-form-field>
-          <input matInput placeholder="Hasło" type="password" />
+          <input
+            matInput
+            formControlName="password"
+            placeholder="Hasło"
+            type="password"
+            autocomplete="off"
+          />
         </mat-form-field>
-      </div>
+
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          style="margin: 10px auto; width: 20%;"
+          [disabled]="loginForm.invalid"
+        >
+          ZALOGUJ SIĘ
+        </button>
+      </form>
+    </mat-card-content>
+    <mat-card-actions>
       <div style=" font-size: 12px;">
         Nie posiadasz u nas konta?
         <a href="/register" style="text-decoration: none; color: plum;"
           >Kliknij tutaj i załóż je w 5 sekund!</a
         >
       </div>
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-stroked-button color="accent">ZALOGUJ SIĘ</button>
     </mat-card-actions>
   </mat-card>
 </div>
