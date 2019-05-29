@@ -1,14 +1,21 @@
 .recipe{
   max-width: 300px;
-  min-height: 550px;
+  min-height: 360px;
   margin: 4px;
   vertical-align: center;
+  text-align: center;
+  
+}
+
+.recipeTitle {
+  background-color: rgb(194,24,91)
 }
 .cardDescription{
   position: absolute;
   bottom: 50px;
-  min-width: 200px;
+  min-width: -20px;
   min-height: 200px;
+  max-width: 270px;
 }
 
 .container{
@@ -33,13 +40,13 @@ table {
 
 .deleteButton{
   position: absolute;
-  bottom: 5px;
+  bottom: 4px;
   left: 20px;
 }
 
 .editButton{
   position: absolute;
-  bottom: 5px;
+  bottom: 4px;
   right: 20px;
 }
 
@@ -52,4 +59,8 @@ table {
   margin-left: -50px;
   margin-top: -50px;
   background-size: 100%;
+}
+
+.title {
+  background-color: blue;
 }

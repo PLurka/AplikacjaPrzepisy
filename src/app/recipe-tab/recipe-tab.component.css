@@ -14,3 +14,11 @@
   margin-top: -50px;
   background-size: 100%;
 }
+
+.showRecipe{
+  position: absolute;
+  margin-top: -17px;
+}
+.choose {
+  padding: 20px;
+}

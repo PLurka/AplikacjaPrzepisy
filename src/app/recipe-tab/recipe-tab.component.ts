@@ -1,13 +1,13 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
-import { MatPaginator, MatSort, MatTableDataSource } from "@angular/material";
-import { RecipeService } from "../recipe/services/recipe.service";
-import { Recipe } from "../recipe/recipe";
-import { Router } from "@angular/router";
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
+import { RecipeService } from '../recipe/services/recipe.service';
+import { Recipe } from '../recipe/recipe';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: "app-recipe-tab",
-  templateUrl: "./recipe-tab.component.html",
-  styleUrls: ["./recipe-tab.component.css"]
+  selector: 'app-recipe-tab',
+  templateUrl: './recipe-tab.component.html',
+  styleUrls: ['./recipe-tab.component.css']
 })
 export class RecipeTabComponent implements OnInit {
   spinner: boolean;
@@ -17,19 +17,19 @@ export class RecipeTabComponent implements OnInit {
   recipes;
   recipeCard: Recipe = new Recipe();
   dataSource;
-  displayedColumns: string[] = ["title", "vege", "show"];
+  displayedColumns: string[] = [ 'title', 'vege', 'show'];
   constructor(private recipeService: RecipeService, private router: Router) {}
 
   ngOnInit() {
     this.spinner = true;
     this.actualPage = 0;
     this.actualLimit = 10;
-    this.actualSort = "Title";
+    this.actualSort = 'Title';
     this.getRecipes();
   }
 
   prevPage() {
-    if (this.actualPage > 0) this.actualPage -= 1;
+    if (this.actualPage > 0) { this.actualPage -= 1; }
     this.getRecipes();
   }
 
@@ -44,7 +44,7 @@ export class RecipeTabComponent implements OnInit {
       .getRecipes(this.actualPage, this.actualLimit, this.actualSort)
       .subscribe(res => {
         this.recipes = new Array<Recipe>();
-        for (let recipe of res["recipes"]) {
+        for (const recipe of res['recipes']) {
           this.recipes.push(recipe);
         }
         this.dataSource = new MatTableDataSource(this.recipes);
@@ -53,11 +53,11 @@ export class RecipeTabComponent implements OnInit {
   }
 
   navigateRecipe(recipeId: string) {
-    this.router.navigate(["/recipe"], { queryParams: { id: recipeId } });
+    this.router.navigate(['/recipe'], { queryParams: { id: recipeId } });
   }
 
   navigateForm() {
-    this.router.navigate(["/new"], { queryParams: { typeForm: 1 } });
+    this.router.navigate(['/new'], { queryParams: { typeForm: 1 } });
   }
 }
 // private paginator: MatPaginator;

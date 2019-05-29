@@ -2,14 +2,15 @@
 <mat-spinner *ngIf="spinner == true" class="spinner"></mat-spinner>
 <div class="container" *ngIf="spinner == false">
   <div class="get">
-    <mat-card class="recipe">
-      <mat-card>{{ recipeCard.title }}</mat-card>
+    <mat-card  class="recipe" color="primary" >
+      <mat-card class = "recipeTitle">{{ recipeCard.title }}</mat-card>
+      <div>Czy to jest przepis wege? : {{ recipeCard.vege }}</div>
       <mat-list>
         <mat-list-item *ngFor="let ingredient of recipeCard.ingredients">
           {{ ingredient.name }}
         </mat-list-item>
       </mat-list>
-      <div>Czy to jest przepis wege? : {{ recipeCard.vege }}</div>
+      
       <mat-card class="cardDescription">{{ recipeCard.description }}</mat-card>
       <button
         mat-flat-button
