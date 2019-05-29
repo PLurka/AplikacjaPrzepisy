@@ -62,6 +62,19 @@
   flex: 10;
 }
 
+.button{
+  flex: 2;
+}
+
+.separator{
+  flex: 2;
+}
+
+.ingredientName{
+  flex: 2;
+  text-align: center;
+}
+
 .ingredientSearch{
   flex: 30;
 }

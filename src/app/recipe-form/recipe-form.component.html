@@ -56,15 +56,17 @@
 
 
   <div class="ingredientsOuter">
-    <div class="ingredientsTitle" *ngIf="spinner == false"> SKŁADNIKI </div>
+    <div class="ingredientsTitle" *ngIf="spinner == false"> INGREDIENTS </div>
     <div class="ingredients">
       <mat-list role="list" class="list">
-        <div class="ingredientsTitle" *ngIf="spinner == false"> Dodane: </div> 
+        <div class="ingredientsTitle" *ngIf="spinner == false"> Added: </div> 
           <mat-list-item role="listitem" *ngFor="let ingredient of recipe.ingredients">
-            <h3>{{ ingredient["name"] }}</h3>
+            <h3 class="ingredientName">{{ ingredient["name"] }}</h3>
+            <div class="separator"></div>
             <button
               mat-flat-button
               color="primary"
+              class="button"
               (click)="deleteIngredient(ingredient)"
             >
               -
