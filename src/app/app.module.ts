@@ -21,6 +21,9 @@ import { RecipeFormComponent } from './recipe-form/recipe-form.component';
 import { AuthService } from './services/auth.service';
 import { IngredientComponent } from './ingredient/ingredient.component';
 import { UserComponent } from './user/user.component';
+import { UsersListComponent } from './users-list/users-list.component';
+import { RecipesListComponent } from './recipes-list/recipes-list.component';
+import { UserEditComponent } from './user-edit/user-edit.component';
 
 const MaterialModules = [
   MatToolbarModule,
@@ -52,7 +55,10 @@ const MaterialModules = [
     RecipeTabComponent,
     RecipeFormComponent,
     IngredientComponent,
-    UserComponent
+    UserComponent,
+    UsersListComponent,
+    RecipesListComponent,
+    UserEditComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -69,9 +75,11 @@ const MaterialModules = [
       { path: 'register', component: RegisterComponent },
       { path: '', canActivate: [AuthGuardService], component: HomeComponent },
       { path: 'recipe', component: RecipeComponent },
-      { path: 'recipes', component: RecipeTabComponent },
+      { path: 'recipes', component: RecipesListComponent },
       { path: 'edit', component: RecipeFormComponent },
-      { path: 'new', component: RecipeFormComponent }
+      { path: 'new', component: RecipeFormComponent },
+      { path: 'users', component: UsersListComponent },
+      { path: 'user', component: UserComponent }
     ]),
   ],
 
