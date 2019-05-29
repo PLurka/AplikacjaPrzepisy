@@ -1,3 +1,16 @@
 <mat-toolbar color="primary">
-  <span>Przepisy</span>
+  <a href="/"  style="text-decoration: none; color: white">Przepisy</a>
+  <div *ngIf="isLogged == true">
+    <button
+      mat-flat-button
+      color="primary"
+      (click)="navigateRecipes()"
+    >
+      Recipes
+    </button>
+    <button mat-flat-button color="primary" (click)="navigateForm()">
+      Add New Recipe
+    </button>
+    <button mat-flat-button color="accent" (click)="authService.logoutUser()" class="logout">Logout</button>
+  </div>
 </mat-toolbar>

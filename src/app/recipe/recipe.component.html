@@ -1,0 +1,32 @@
+<app-navbar></app-navbar>
+<mat-spinner *ngIf="spinner == true" class="spinner"></mat-spinner>
+<div class="container" *ngIf="spinner == false">
+  <div class="get">
+    <mat-card class="recipe">
+      <mat-card>{{ recipeCard.title }}</mat-card>
+      <mat-list>
+        <mat-list-item *ngFor="let ingredient of recipeCard.ingredients">
+          {{ ingredient.name }}
+        </mat-list-item>
+      </mat-list>
+      <div>Czy to jest przepis wege? : {{ recipeCard.vege }}</div>
+      <mat-card class="cardDescription">{{ recipeCard.description }}</mat-card>
+      <button
+        mat-flat-button
+        color="primary"
+        (click)="deleteRecipe(recipeCard.id)"
+        class="deleteButton"
+      >
+        Delete recipe
+      </button>
+      <button
+        mat-flat-button
+        color="primary"
+        (click)="editRecipe()"
+        class="editButton"
+      >
+        Edit recipe
+      </button>
+    </mat-card>
+  </div>
+</div>

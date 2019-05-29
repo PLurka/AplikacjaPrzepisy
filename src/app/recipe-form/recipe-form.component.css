@@ -1,0 +1,27 @@
+.spinner{
+  position: absolute;
+  height: 100px;
+  width: 100px;
+  top: 50%;
+  left: 50%;
+  margin-left: -50px;
+  margin-top: -50px;
+  background-size: 100%;
+}
+
+.ingredient{
+  position: absolute;
+  width: 100px;
+  left: 50%;
+  background-size: 100%;
+}
+
+.container{
+  display: flex;
+}
+.post{
+  flex: 1;
+}
+.ingredient{
+  flex: 2;
+}
