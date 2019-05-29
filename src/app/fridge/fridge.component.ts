@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
+import { Ingredient } from "../ingredient/ingredient";
 
 @Component({
-  selector: 'app-fridge',
-  templateUrl: './fridge.component.html',
-  styleUrls: ['./fridge.component.css']
+  selector: "app-fridge",
+  templateUrl: "./fridge.component.html",
+  styleUrls: ["./fridge.component.css"]
 })
 export class FridgeComponent implements OnInit {
-
-  constructor() { }
+  spinner: boolean;
+  fridge: Ingredient[];
+  constructor() {}
 
   ngOnInit() {
+    this.spinner = true;
   }
-
 }

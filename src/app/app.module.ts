@@ -7,7 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { NavbarComponent } from './navbar/navbar.component';
 
-import { MatToolbarModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatOptionModule, MatCardModule, MatButtonModule, MatRadioModule, MatSidenavModule, MatSnackBarModule, MatListModule, MatTableModule, MatCheckboxModule, MatPaginatorModule, MatSortModule, MatSpinner, MatProgressSpinnerModule } from '@angular/material';
+import { MatToolbarModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatOptionModule, MatCardModule, MatButtonModule, MatRadioModule, MatSidenavModule, MatSnackBarModule, MatListModule, MatTableModule, MatCheckboxModule, MatPaginatorModule, MatSortModule, MatSpinner, MatProgressSpinnerModule, MatDialogModule, MatDialog } from '@angular/material';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
@@ -25,6 +25,7 @@ import { UsersListComponent } from './users-list/users-list.component';
 import { RecipesListComponent } from './recipes-list/recipes-list.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
 import { FridgeComponent } from './fridge/fridge.component';
+import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 
 const MaterialModules = [
   MatToolbarModule,
@@ -42,7 +43,8 @@ const MaterialModules = [
   MatCheckboxModule,
   MatPaginatorModule,
   MatSortModule,
-  MatProgressSpinnerModule
+  MatProgressSpinnerModule,
+  MatDialogModule
 ];
 
 @NgModule({
@@ -60,7 +62,8 @@ const MaterialModules = [
     UsersListComponent,
     RecipesListComponent,
     UserEditComponent,
-    FridgeComponent
+    FridgeComponent,
+    ConfirmationDialogComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -87,6 +90,7 @@ const MaterialModules = [
 
 
   providers: [AuthService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ConfirmationDialogComponent]
 })
 export class AppModule { }

@@ -1,3 +1,15 @@
-<p>
-  fridge works!
-</p>
+<mat-list role="list" class="list">
+    <div class="ingredientsTitle" *ngIf="spinner == false"> Added: </div>
+      <mat-list-item role="listitem" *ngFor="let ingredient of fridge.ingredients">
+        <h3 class="ingredientName">{{ ingredient["name"] }}</h3>
+        <div class="separator"></div>
+        <button
+          mat-flat-button
+          color="primary"
+          class="button"
+          (click)="deleteIngredient(ingredient)"
+        >
+          -
+        </button>
+      </mat-list-item>
+    </mat-list>

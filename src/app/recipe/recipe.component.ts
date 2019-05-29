@@ -4,6 +4,8 @@ import { LoginService } from "../login/services/login.service";
 import { Recipe } from "./recipe";
 import { RecipeService } from "./services/recipe.service";
 import { ActivatedRoute, Router } from "@angular/router";
+import { MatSnackBar, MatDialog } from "@angular/material";
+import { ConfirmationDialogComponent } from "../confirmation-dialog/confirmation-dialog.component";
 
 @Component({
   selector: "app-recipe",
@@ -19,13 +21,28 @@ export class RecipeComponent implements OnInit {
   constructor(
     private recipeService: RecipeService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private snackBar: MatSnackBar,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
       this.getRecipe(params["id"]);
       this.spinner = true;
+    });
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      width: '350px',
+      data: "Do you confirm the deletion of this recipe?"
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if(result) {
+        console.log('Yes clicked');
+        this.deleteRecipe(this.recipeCard.id);
+      }
     });
   }
 
@@ -49,7 +66,10 @@ export class RecipeComponent implements OnInit {
       response => {
         console.log(response);
         this.recipeCard = new Recipe();
-        this.router.navigate(["/recipes"]);
+        this.snackBar.open("Recipe deleted successfully!", "OK", {
+          duration: 3000
+        });
+        this.router.navigate(["/recipes"], { queryParams: { userId: 0 } });
       },
       error => {
         console.log(error);
