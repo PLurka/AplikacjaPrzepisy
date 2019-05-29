@@ -37,7 +37,7 @@
           class="title"
         />
       </mat-form-field>
-      
+
       <mat-form-field class="description">
         <textarea
           matInput
@@ -55,11 +55,11 @@
 
 
 
-  <div class="ingredientsOuter">
-    <div class="ingredientsTitle" *ngIf="spinner == false"> INGREDIENTS </div>
+  <div class="ingredientsOuter" *ngIf="spinner == false">
+    <div class="ingredientsTitle"> INGREDIENTS </div>
     <div class="ingredients">
       <mat-list role="list" class="list">
-        <div class="ingredientsTitle" *ngIf="spinner == false"> Added: </div> 
+        <div class="ingredientsTitle" *ngIf="spinner == false"> Added: </div>
           <mat-list-item role="listitem" *ngFor="let ingredient of recipe.ingredients">
             <h3 class="ingredientName">{{ ingredient["name"] }}</h3>
             <div class="separator"></div>
@@ -81,9 +81,4 @@
       </div>
     </div>
   </div>
-
-
-
-
-
 </div>

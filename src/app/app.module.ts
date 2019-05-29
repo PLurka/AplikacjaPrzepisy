@@ -24,6 +24,7 @@ import { UserComponent } from './user/user.component';
 import { UsersListComponent } from './users-list/users-list.component';
 import { RecipesListComponent } from './recipes-list/recipes-list.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
+import { FridgeComponent } from './fridge/fridge.component';
 
 const MaterialModules = [
   MatToolbarModule,
@@ -58,7 +59,8 @@ const MaterialModules = [
     UserComponent,
     UsersListComponent,
     RecipesListComponent,
-    UserEditComponent
+    UserEditComponent,
+    FridgeComponent
   ],
   imports: [
     BrowserAnimationsModule,

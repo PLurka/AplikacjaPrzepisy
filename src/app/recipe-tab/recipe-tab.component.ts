@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild, Input } from "@angular/core";
-import { MatPaginator, MatSort, MatTableDataSource } from "@angular/material";
+import { Component, OnInit, Input } from "@angular/core";
+import { MatTableDataSource } from "@angular/material";
 import { RecipeService } from "../recipe/services/recipe.service";
 import { Recipe } from "../recipe/recipe";
 import { Router } from "@angular/router";
