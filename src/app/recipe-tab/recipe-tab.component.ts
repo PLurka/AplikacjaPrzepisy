@@ -31,7 +31,7 @@ export class RecipeTabComponent implements OnInit {
     this.actualPage = 0;
     this.actualLimit = 10;
     this.actualSort = "Title";
-    if (this.userId == "0") this.getRecipes();
+    if (this.userId == 0) this.getRecipes();
     else this.getUserRecipes(this.userId);
   }
 
@@ -62,7 +62,7 @@ export class RecipeTabComponent implements OnInit {
       });
   }
 
-  getUserRecipes(userId: string) {
+  getUserRecipes(userId: number) {
     this.spinner = true;
     this.userService.getUserRecipes(userId).subscribe(res => {
       this.userRecipes = new Array<Recipe>();
