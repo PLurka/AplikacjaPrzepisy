@@ -2,8 +2,8 @@
 <div class="container">
   <mat-spinner *ngIf="spinner == true" class="spinner"></mat-spinner>
   <div class="post" *ngIf="spinner == false">
-    <form *ngIf="typeForm == 1">
-      <mat-form-field>
+    <form *ngIf="typeForm == 1" class="form">
+      <mat-form-field class="titleContainer">
         <input
           matInput
           placeholder="Input title"
@@ -12,7 +12,8 @@
           class="title"
         />
       </mat-form-field>
-      <mat-form-field>
+
+      <mat-form-field class="description">
         <textarea
           matInput
           placeholder="Input description"
@@ -26,8 +27,8 @@
       </button>
     </form>
 
-    <form *ngIf="typeForm == 0">
-      <mat-form-field>
+    <form *ngIf="typeForm == 0" class="form">
+      <mat-form-field class="titleContainer">
         <input
           matInput
           placeholder="Edit title"
@@ -36,7 +37,8 @@
           class="title"
         />
       </mat-form-field>
-      <mat-form-field>
+      
+      <mat-form-field class="description">
         <textarea
           matInput
           placeholder="Edit description"
@@ -49,22 +51,37 @@
         Apply changes
       </button>
     </form>
-    <mat-list role="list">
-      <mat-list-item role="listitem" *ngFor="let ingredient of recipe.ingredients"
-        >{{ ingredient["name"] }}
-        <button
-          mat-flat-button
-          color="primary"
-          (click)="deleteIngredient(ingredient)"
-        >
-          Delete ingredient
-        </button>
-      </mat-list-item>
-    </mat-list>
   </div>
-  <div class="ingredient" *ngIf="spinner == false">
-    <app-ingredient
-      (eventIngredient)="selectedIngredient($event)"
-    ></app-ingredient>
+
+
+
+  <div class="ingredientsOuter">
+    <div class="ingredientsTitle" *ngIf="spinner == false"> SKŁADNIKI </div>
+    <div class="ingredients">
+      <mat-list role="list" class="list">
+        <div class="ingredientsTitle" *ngIf="spinner == false"> Dodane: </div> 
+          <mat-list-item role="listitem" *ngFor="let ingredient of recipe.ingredients">
+            <h3>{{ ingredient["name"] }}</h3>
+            <button
+              mat-flat-button
+              color="primary"
+              (click)="deleteIngredient(ingredient)"
+            >
+              -
+            </button>
+          </mat-list-item>
+        </mat-list>
+
+      <div class="ingredientSearch" *ngIf="spinner == false">
+        <app-ingredient
+          (eventIngredient)="selectedIngredient($event)"
+        ></app-ingredient>
+      </div>
+    </div>
   </div>
+
+
+
+
+
 </div>

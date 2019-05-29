@@ -16,12 +16,52 @@
   background-size: 100%;
 }
 
+.form{
+  display: flex;
+  flex-direction: column;
+}
+
+.titleContainer{
+  flex: 1;
+}
+
+.description{
+  flex: 20;
+}
+
+.inputDescription{
+  resize: vertical;
+  min-height: 300px;
+  height: fit-content;
+}
+
 .container{
   display: flex;
 }
+
 .post{
-  flex: 1;
+  display: flex;
+  flex-direction: column;
+  flex: 70;
 }
-.ingredient{
-  flex: 2;
+
+.ingredientsOuter{
+  flex: 40;
+}
+
+.ingredients{
+  display: flex;
+}
+
+.ingredientsTitle{
+  text-align: center;
+  font-size: 25px;
+}
+
+.list{
+  flex: 10;
+}
+
+.ingredientSearch{
+  flex: 30;
 }
