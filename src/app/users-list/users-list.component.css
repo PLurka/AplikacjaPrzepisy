@@ -8,19 +8,3 @@
   margin-top: -50px;
   background-size: 100%;
 }
-
-.container{
-  display: flex;
-}
-
-table {
-  width: 100%;
-}
-
-.userProfile{
-  flex: 1;
-}
-
-.userRecipes{
-  flex: 2;
-}

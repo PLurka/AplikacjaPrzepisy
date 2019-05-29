@@ -43,7 +43,7 @@ export class UserService {
       );
   }
 
-  getUserRecipes(userId: string): Observable<object> {
+  getUserRecipes(userId: number): Observable<object> {
     return this.httpClient
       .get(
         `https://team-recipes.herokuapp.com/users/${userId}/recipes`,

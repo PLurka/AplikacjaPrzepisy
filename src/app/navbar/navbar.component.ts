@@ -16,12 +16,16 @@ export class NavbarComponent implements OnInit {
   }
 
   navigateRecipes() {
-    this.router.navigate(["/recipes"]);
+    this.router.navigate(["/recipes"], { queryParams: { userId: 0 } });
   }
 
   navigateForm() {
     this.router.navigate(["/new"], {
       queryParams: { typeForm: 1 }
     });
+  }
+
+  navigateUsers() {
+    this.router.navigate(["/users"]);
   }
 }
