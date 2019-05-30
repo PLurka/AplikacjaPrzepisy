@@ -61,6 +61,7 @@ export class RecipeComponent implements OnInit {
   }
 
   deleteRecipe(recipeId: string) {
+    this.spinner = true;
     console.log(recipeId);
     this.recipeService.deleteRecipe(recipeId).subscribe(
       response => {
