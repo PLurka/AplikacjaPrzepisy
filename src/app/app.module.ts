@@ -84,7 +84,8 @@ const MaterialModules = [
       { path: 'edit', component: RecipeFormComponent },
       { path: 'new', component: RecipeFormComponent },
       { path: 'users', component: UsersListComponent },
-      { path: 'user', component: UserComponent }
+      { path: 'user', component: UserComponent },
+      { path: 'edituser', component: UserEditComponent }
     ]),
   ],
 

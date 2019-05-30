@@ -50,7 +50,7 @@ export class UserComponent implements OnInit {
   }
 
   editProfile() {
-    //navigate to user-edit
+    this.router.navigate(["/edituser"]);
   }
 
   navigateRecipe(recipeId: string) {

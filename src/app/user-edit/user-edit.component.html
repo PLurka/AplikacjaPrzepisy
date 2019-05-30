@@ -1,3 +1,32 @@
-<p>
-  user-edit works!
-</p>
+<div class="container">
+  <mat-toolbar color="primary">
+    <span>Diet edit</span>
+  </mat-toolbar>
+  <mat-card class="example-card">
+    <mat-card-content>
+      <form
+        class="form-container"
+        [formGroup]="editDietForm"
+        (ngSubmit)="onEditSubmit()"
+      >
+        <mat-form-field>
+          <input
+            matInput
+            formControlName="diet"
+            placeholder="User diet"
+            type="text"
+          />
+        </mat-form-field>
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          style="margin: 10px auto; width: 30%;"
+          [disabled]="editDietForm.invalid"
+        >
+          Edit diet
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
