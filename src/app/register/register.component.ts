@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
-import { LoginService } from '../login/services/login.service';
 import { RegisterService } from './services/register.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { first } from 'rxjs/operators';
@@ -58,7 +57,7 @@ export class RegisterComponent implements OnInit {
   onSubmit() {
     const formValue = this.registerForm.value;
     // tslint:disable-next-line:max-line-length
-    this.registerService.register(formValue.username, formValue.name, formValue.surname, formValue.email, formValue.password, formValue.confirmPassword)
+    this.registerService.register(formValue.username, formValue.email, formValue.password)
       .pipe(first())
       .subscribe(
         data => {
