@@ -16,12 +16,65 @@
   background-size: 100%;
 }
 
+.form{
+  display: flex;
+  flex-direction: column;
+}
+
+.titleContainer{
+  flex: 1;
+}
+
+.description{
+  flex: 20;
+}
+
+.inputDescription{
+  resize: vertical;
+  min-height: 300px;
+  height: fit-content;
+}
+
 .container{
   display: flex;
 }
+
 .post{
-  flex: 1;
+  display: flex;
+  flex-direction: column;
+  flex: 70;
 }
-.ingredient{
+
+.ingredientsOuter{
+  flex: 40;
+}
+
+.ingredients{
+  display: flex;
+}
+
+.ingredientsTitle{
+  text-align: center;
+  font-size: 25px;
+}
+
+.list{
+  flex: 10;
+}
+
+.button{
   flex: 2;
+}
+
+.separator{
+  flex: 2;
+}
+
+.ingredientName{
+  flex: 2;
+  text-align: center;
+}
+
+.ingredientSearch{
+  flex: 30;
 }

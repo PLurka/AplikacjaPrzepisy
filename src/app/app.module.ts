@@ -7,7 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { NavbarComponent } from './navbar/navbar.component';
 
-import { MatToolbarModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatOptionModule, MatCardModule, MatButtonModule, MatRadioModule, MatSidenavModule, MatSnackBarModule, MatListModule, MatTableModule, MatCheckboxModule, MatPaginatorModule, MatSortModule, MatSpinner, MatProgressSpinnerModule } from '@angular/material';
+import { MatToolbarModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatOptionModule, MatCardModule, MatButtonModule, MatRadioModule, MatSidenavModule, MatSnackBarModule, MatListModule, MatTableModule, MatCheckboxModule, MatPaginatorModule, MatSortModule, MatSpinner, MatProgressSpinnerModule, MatDialogModule, MatDialog } from '@angular/material';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
@@ -21,6 +21,11 @@ import { RecipeFormComponent } from './recipe-form/recipe-form.component';
 import { AuthService } from './services/auth.service';
 import { IngredientComponent } from './ingredient/ingredient.component';
 import { UserComponent } from './user/user.component';
+import { UsersListComponent } from './users-list/users-list.component';
+import { RecipesListComponent } from './recipes-list/recipes-list.component';
+import { UserEditComponent } from './user-edit/user-edit.component';
+import { FridgeComponent } from './fridge/fridge.component';
+import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 
 const MaterialModules = [
   MatToolbarModule,
@@ -38,7 +43,8 @@ const MaterialModules = [
   MatCheckboxModule,
   MatPaginatorModule,
   MatSortModule,
-  MatProgressSpinnerModule
+  MatProgressSpinnerModule,
+  MatDialogModule
 ];
 
 @NgModule({
@@ -52,7 +58,12 @@ const MaterialModules = [
     RecipeTabComponent,
     RecipeFormComponent,
     IngredientComponent,
-    UserComponent
+    UserComponent,
+    UsersListComponent,
+    RecipesListComponent,
+    UserEditComponent,
+    FridgeComponent,
+    ConfirmationDialogComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -69,14 +80,17 @@ const MaterialModules = [
       { path: 'register', component: RegisterComponent },
       { path: '', canActivate: [AuthGuardService], component: HomeComponent },
       { path: 'recipe', component: RecipeComponent },
-      { path: 'recipes', component: RecipeTabComponent },
+      { path: 'recipes', component: RecipesListComponent },
       { path: 'edit', component: RecipeFormComponent },
-      { path: 'new', component: RecipeFormComponent }
+      { path: 'new', component: RecipeFormComponent },
+      { path: 'users', component: UsersListComponent },
+      { path: 'user', component: UserComponent }
     ]),
   ],
 
 
   providers: [AuthService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ConfirmationDialogComponent]
 })
 export class AppModule { }

@@ -3,6 +3,7 @@ import { Component, OnInit } from "@angular/core";
 import { Recipe } from "../recipe/recipe";
 import { RecipeService } from "../recipe/services/recipe.service";
 import { ActivatedRoute, Router } from "@angular/router";
+import { MatSnackBar } from "@angular/material";
 
 @Component({
   selector: "app-recipe-form",
@@ -17,7 +18,8 @@ export class RecipeFormComponent implements OnInit {
   constructor(
     private recipeService: RecipeService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit() {
@@ -81,7 +83,10 @@ export class RecipeFormComponent implements OnInit {
     this.recipeService.createRecipe(this.recipe).subscribe(
       response => {
         this.recipe = new Recipe();
-        this.router.navigate(["/recipes"]);
+        this.snackBar.open('Recipe created successfully!', 'OK', {
+          duration: 3000
+        });
+        this.router.navigate(["/"]);
       },
       error => {
         console.log(error);
@@ -100,6 +105,9 @@ export class RecipeFormComponent implements OnInit {
     this.recipe.vege = this.checkVege();
     this.recipeService.putRecipe(recipeId, this.recipe).subscribe(response => {
       this.recipe = new Recipe();
+      this.snackBar.open('Recipe updated successfully!', 'OK', {
+        duration: 3000
+      });
       this.router.navigate(["/recipe"], { queryParams: { id: recipeId } });
     });
   }

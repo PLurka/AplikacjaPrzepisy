@@ -17,10 +17,10 @@ export class UserService {
     })
   };
 
-  getUser(recipeId: string): Observable<object> {
+  getUser(userId: number): Observable<object> {
     return this.httpClient
       .get(
-        `https://team-recipes.herokuapp.com/users/${recipeId}`,
+        `https://team-recipes.herokuapp.com/users/${userId}`,
         this.httpOptions
       )
       .pipe(
@@ -43,7 +43,7 @@ export class UserService {
       );
   }
 
-  getUserRecipes(userId: string): Observable<object> {
+  getUserRecipes(userId: number): Observable<object> {
     return this.httpClient
       .get(
         `https://team-recipes.herokuapp.com/users/${userId}/recipes`,
