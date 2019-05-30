@@ -42,7 +42,9 @@ export class RecipeFormComponent implements OnInit {
   validateIngredient(ingredientId: string): boolean {
     for (let i = 0; i < this.recipe.ingredients.length; i++) {
       if (this.recipe.ingredients[i].id == ingredientId) {
-        console.log("istnieje już taki składnik");
+        this.snackBar.open('Ingredient already exists!', 'OK', {
+          duration: 2000
+        });
         return false;
       }
     }

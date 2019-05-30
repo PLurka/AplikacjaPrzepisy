@@ -36,7 +36,7 @@ export class FridgeService {
 
   deleteIngredient(ingredientId: string): Observable<object> {
     return this.httpClient.delete(
-      `https://team-recipes.herokuapp.com/delete/${ingredientId}`,
+      `https://team-recipes.herokuapp.com/fridge/delete/${ingredientId}`,
       this.httpOptions
     );
   }

@@ -28,4 +28,8 @@ export class NavbarComponent implements OnInit {
   navigateUsers() {
     this.router.navigate(["/users"]);
   }
+
+  navigateFridge() {
+    this.router.navigate(["/fridge"])
+  }
 }
