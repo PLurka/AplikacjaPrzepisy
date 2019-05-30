@@ -46,7 +46,7 @@ export class UserEditComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          this.snackBar.open("Pomyślnie utworzyłeś konto", "OK", {
+          this.snackBar.open("", "OK", {
             duration: 3000
           });
         },
