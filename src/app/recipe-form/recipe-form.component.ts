@@ -86,7 +86,7 @@ export class RecipeFormComponent implements OnInit {
         this.snackBar.open('Recipe created successfully!', 'OK', {
           duration: 3000
         });
-        this.router.navigate(["/recipes"], { queryParams: { userId: 0 } });
+        this.router.navigate(["/"]);
       },
       error => {
         console.log(error);

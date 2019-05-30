@@ -10,6 +10,7 @@ import { MatTableDataSource } from "@angular/material";
   styleUrls: ["./users-list.component.css"]
 })
 export class UsersListComponent implements OnInit {
+  loggedUser;
   dataSource;
   users;
   spinner: boolean;
@@ -37,20 +38,26 @@ export class UsersListComponent implements OnInit {
 
   getUsers() {
     this.spinner = true;
-    this.userService.getUsers(this.actualPage, this.actualLimit).subscribe(res => {
-      this.users = new Array<User>();
-      console.log(res[0]);
-      this.users = res;
-      this.dataSource = new MatTableDataSource(this.users);
-      this.spinner = false;
-    });
+    this.userService
+      .getUsers(this.actualPage, this.actualLimit)
+      .subscribe(res => {
+        this.users = new Array<User>();
+        console.log(res[0]);
+        this.users = res;
+        this.dataSource = new MatTableDataSource(this.users);
+        this.spinner = false;
+      });
   }
 
   navigateUser(userId: number) {
-    this.router.navigate(["/user"], {
-      queryParams: {
-        userId: userId
-      }
-    });
+    if (JSON.parse(localStorage.getItem("user"))["id"] == userId) {
+      this.router.navigate(["/"]);
+    } else {
+      this.router.navigate(["/user"], {
+        queryParams: {
+          userId: userId
+        }
+      });
+    }
   }
 }

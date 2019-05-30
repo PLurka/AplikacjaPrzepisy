@@ -16,6 +16,7 @@ export class UserComponent implements OnInit {
   userRecipes;
   spinner: boolean;
   dataSource;
+  loggedUser;
   displayedColumns: string[] = ["title", "vege", "show"];
 
   constructor(
@@ -26,15 +27,19 @@ export class UserComponent implements OnInit {
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
-      console.log(params["userId"]);
       this.spinner = true;
-      this.userId = params["userId"];
-      this.getUser(params["userId"]);
-      // this.getRecipes(params["userId"]);
+      this.loggedUser = JSON.parse(localStorage.getItem("user"));
+      this.userId = params["userId"] || this.loggedUser["id"];
+      this.getUser(this.userId);
     });
   }
 
-  getUser(userId: string) {
+  validateUser(): boolean {
+    if (this.userId == this.loggedUser["id"]) return true;
+    else return false;
+  }
+
+  getUser(userId: number) {
     this.userService.getUser(userId).subscribe(res => {
       this.user = new User();
       this.user.id = res["id"];
