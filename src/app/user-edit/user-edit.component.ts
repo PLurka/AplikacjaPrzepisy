@@ -12,6 +12,10 @@ import { UserEditService } from "./services.ts/user-edit.service";
   styleUrls: ["./user-edit.component.css"]
 })
 export class UserEditComponent implements OnInit {
+  diet: Diet;
+  vege: boolean;
+  options: string[] = ["Yes", "No"];
+  pickedAnswer: string;
   editDietForm: FormGroup;
   editEmailForm: FormGroup;
   editPasswordForm: FormGroup;
@@ -22,9 +26,6 @@ export class UserEditComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.editDietForm = this.formBuilder.group({
-      diet: ["", [Validators.required]]
-    });
 
     // this.editEmailForm = this.formBuilder.group({
     //   email: ['', [Validators.required, Validators.email]]
@@ -38,15 +39,16 @@ export class UserEditComponent implements OnInit {
     // });
   }
 
-  onEditSubmit() {
-    const formValue = this.editDietForm.value;
-    // tslint:disable-next-line:max-line-length
+  onEditDietSubmit() {
+    this.diet = new Diet();
+    if (this.pickedAnswer == "Yes") this.diet.diet = true;
+    else this.diet.diet = false;
     this.userEditService
-      .putDiet(formValue.diet)
+      .putDiet(this.diet)
       .pipe(first())
       .subscribe(
         data => {
-          this.snackBar.open("", "OK", {
+          this.snackBar.open("Successfully changed your diet!", "OK", {
             duration: 3000
           });
         },
@@ -57,4 +59,8 @@ export class UserEditComponent implements OnInit {
         }
       );
   }
+}
+
+export class Diet {
+  diet: boolean;
 }
