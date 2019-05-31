@@ -85,14 +85,14 @@ const MaterialModules = [
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent },
       { path: '', canActivate: [AuthGuardService], component: HomeComponent },
-      { path: 'recipe', component: RecipeComponent },
-      { path: 'recipes', component: RecipesListComponent },
-      { path: 'edit', component: RecipeFormComponent },
-      { path: 'new', component: RecipeFormComponent },
-      { path: 'users', component: UsersListComponent },
-      { path: 'user', component: UserComponent },
-      { path: 'edituser', component: UserEditComponent },
-      { path: 'fridge', component: FridgeComponent }
+      { path: 'recipe', canActivate: [AuthGuardService], component: RecipeComponent },
+      { path: 'recipes', canActivate: [AuthGuardService], component: RecipesListComponent },
+      { path: 'edit', canActivate: [AuthGuardService], component: RecipeFormComponent },
+      { path: 'new', canActivate: [AuthGuardService], component: RecipeFormComponent },
+      { path: 'users', canActivate: [AuthGuardService], component: UsersListComponent },
+      { path: 'user', canActivate: [AuthGuardService], component: UserComponent },
+      { path: 'edituser', canActivate: [AuthGuardService], component: UserEditComponent },
+      { path: 'fridge', canActivate: [AuthGuardService], component: FridgeComponent }
     ]),
   ],
 
