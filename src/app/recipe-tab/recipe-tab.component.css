@@ -4,6 +4,13 @@
   width: 100%;
 }
 
+th, td {
+  overflow: hidden;
+  width: 33%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .spinner{
   position: absolute;
   height: 100px;
