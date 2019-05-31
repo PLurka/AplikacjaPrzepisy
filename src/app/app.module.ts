@@ -26,6 +26,8 @@ import { RecipesListComponent } from './recipes-list/recipes-list.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
 import { FridgeComponent } from './fridge/fridge.component';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
+import { WelcomeComponent } from './welcome/welcome.component';
+import { GoodbyeComponent } from './goodbye/goodbye.component';
 
 const MaterialModules = [
   MatToolbarModule,
@@ -63,7 +65,9 @@ const MaterialModules = [
     RecipesListComponent,
     UserEditComponent,
     FridgeComponent,
-    ConfirmationDialogComponent
+    ConfirmationDialogComponent,
+    WelcomeComponent,
+    GoodbyeComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -76,6 +80,8 @@ const MaterialModules = [
     FormsModule,
     OverlayModule,
     RouterModule.forRoot([
+      { path: 'welcome', component: WelcomeComponent},
+      { path: 'goodbye', component: GoodbyeComponent},
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent },
       { path: '', canActivate: [AuthGuardService], component: HomeComponent },

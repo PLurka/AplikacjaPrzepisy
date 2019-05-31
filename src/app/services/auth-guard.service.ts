@@ -18,7 +18,7 @@ canActivate() {
         // If they do, return true and allow the user to load app
         return true;
     }
-    this.router.navigate(['/login']);
+    this.router.navigate(['/welcome']);
     return false;
 }
 
