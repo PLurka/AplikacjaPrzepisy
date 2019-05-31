@@ -27,3 +27,26 @@
 .form-container > * {
   width: 100%;
 }
+
+.container{
+  display: flex;
+}
+
+.vegeBackground{
+  display: flex;
+  flex-direction: column;
+}
+
+.example-radio-group{
+  text-align: center;
+  display: flex;
+  width: 50%;
+  justify-content: space-between;
+  padding-left: 25%;
+  padding-right: 25%;
+}
+
+.radioGroup{
+  display: flex;
+  text-align: center;
+}
