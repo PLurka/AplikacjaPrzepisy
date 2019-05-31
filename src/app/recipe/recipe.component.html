@@ -4,7 +4,8 @@
   <div class="get">
     <mat-card class="recipe" color="primary">
       <mat-card class="recipeTitle">{{ recipeCard.title }}</mat-card>
-      <div>Czy to jest przepis wege? : {{ recipeCard.vege }}</div>
+      <div *ngIf="recipeCard.vege == true">Vege recipe - Yes</div>
+      <div *ngIf="recipeCard.vege == true">Vege recipe - No</div>
       <mat-list>
         <mat-list-item *ngFor="let ingredient of recipeCard.ingredients">
           {{ ingredient.name }}

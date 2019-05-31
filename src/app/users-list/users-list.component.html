@@ -6,7 +6,7 @@
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
       <td mat-cell *matCellDef="let element">{{ element.id }}</td>
     </ng-container> -->
-  
+
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef mat-header>Id</th>
       <td mat-cell *matCellDef="let element">{{ element.id }}</td>
@@ -18,8 +18,11 @@
     </ng-container>
 
     <ng-container matColumnDef="vege">
-      <th mat-header-cell *matHeaderCellDef mat-header>Vege?</th>
-      <td mat-cell *matCellDef="let element">{{ element.vege }}</td>
+      <th mat-header-cell *matHeaderCellDef mat-header>Vege</th>
+      <td mat-cell *matCellDef="let element">
+          <div *ngIf="element.vege == true">Yes</div>
+          <div *ngIf="element.vege == false">No</div>
+          </td>
     </ng-container>
 
     <ng-container matColumnDef="show">

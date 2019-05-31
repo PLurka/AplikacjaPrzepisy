@@ -5,16 +5,9 @@
     <mat-card>
       <mat-card>
         <div>{{ user.username }}</div>
-        <div>Czy ten user to wege? : {{ user.vege }}</div>
+        <div *ngIf="user.vege == true">Vegeterian - Yes</div>
+        <div *ngIf="user.vege == true">Vegeterian - No</div>
       </mat-card>
-      <!-- <button
-        mat-flat-button
-        color="primary"
-        (click)="deleteRecipe(recipeCard.id)"
-        class="deleteButton"
-      >
-        Delete recipe
-      </button> -->
       <button
         *ngIf="checkUser() == true"
         mat-flat-button
