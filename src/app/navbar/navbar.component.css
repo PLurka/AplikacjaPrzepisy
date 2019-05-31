@@ -1,3 +1,8 @@
 .mat-toolbar.mat-primary {
   position: relative;
 }
+
+.logout{
+  position: absolute;
+  right: 20px;
+}

@@ -1,0 +1,28 @@
+<app-navbar></app-navbar>
+<mat-spinner *ngIf="spinner == true" class="spinner"></mat-spinner>
+<div *ngIf="spinner == false">
+  <div class="container" >
+    <app-ingredient
+      (eventIngredient)="selectedIngredient($event)"
+      class="ingredientsList"
+    ></app-ingredient>
+    <mat-list role="list" class="fridge">
+      <div class="ingredientsTitle">My fridge:</div>
+      <mat-list-item role="listitem" *ngFor="let ingredient of fridge">
+        <h3 class="ingredientName">{{ ingredient["name"] }}</h3>
+        <div class="separator"></div>
+        <button
+          mat-flat-button
+          color="primary"
+          class="button"
+          (click)="deleteIngredient(ingredient.id)"
+        >
+          -
+        </button>
+      </mat-list-item>
+    </mat-list>
+  </div>
+  <button mat-flat-button color="primary" class="button" (click)="clearFridge()">
+    Clear Fridge
+  </button>
+</div>

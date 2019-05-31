@@ -1,6 +1,6 @@
 <div class="container">
   <mat-toolbar color="primary">
-    <span>Rejestracja</span>
+    <span>Registration</span>
   </mat-toolbar>
   <mat-card class="example-card">
     <mat-card-content>
@@ -13,7 +13,7 @@
           <input
             matInput
             formControlName="username"
-            placeholder="Nick użytkownika"
+            placeholder="User nick"
             type="text"
           />
         </mat-form-field>
@@ -31,7 +31,7 @@
           <input
             matInput
             formControlName="password"
-            placeholder="Hasło"
+            placeholder="Password"
             type="password"
             autocomplete="off"
           />
@@ -41,8 +41,8 @@
           <input
             matInput
             formControlName="confirmPassword"
-            placeholder="Potwierdź hasło"
-            type="password"
+            placeholder="Confrim password"
+            type="confirmPassword"
             autocomplete="off"
           />
         </mat-form-field>
@@ -54,7 +54,7 @@
           style="margin: 10px auto; width: 30%;"
           [disabled]="registerForm.invalid"
         >
-          ZAREJESTRUJ SIĘ
+          Register
         </button>
       </form>
     </mat-card-content>

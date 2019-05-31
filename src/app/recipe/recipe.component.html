@@ -1,0 +1,39 @@
+<app-navbar></app-navbar>
+<mat-spinner *ngIf="spinner == true" class="spinner"></mat-spinner>
+<div class="container" *ngIf="spinner == false">
+  <div class="get">
+    <mat-card class="recipe" color="primary">
+      <mat-card class="recipeTitle">{{ recipeCard.title }}</mat-card>
+      <div *ngIf="recipeCard.vege == true">Vege recipe - Yes</div>
+      <div *ngIf="recipeCard.vege == false">Vege recipe - No</div>
+      <mat-list>
+        <mat-list-item *ngFor="let ingredient of recipeCard.ingredients">
+          {{ ingredient.name }}
+        </mat-list-item>
+      </mat-list>
+
+      <mat-card class="cardDescription">{{ recipeCard.description }}</mat-card>
+      <button
+        *ngIf="checkUser() == true"
+        mat-flat-button
+        color="primary"
+        (click)="openDialog()"
+        class="deleteButton"
+      >
+        Delete recipe
+      </button>
+      <button
+        *ngIf="checkUser() == true"
+        mat-flat-button
+        color="primary"
+        (click)="editRecipe()"
+        class="editButton"
+      >
+        Edit recipe
+      </button>
+    </mat-card>
+  </div>
+  <a style="cursor: pointer" (click)="navigateProfile()">{{
+    recipeCard.user["username"]
+  }}</a>
+</div>

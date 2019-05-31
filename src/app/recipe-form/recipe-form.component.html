@@ -1,0 +1,84 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <mat-spinner *ngIf="spinner == true" class="spinner"></mat-spinner>
+  <div class="post" *ngIf="spinner == false">
+    <form *ngIf="typeForm == 1" class="form">
+      <mat-form-field class="titleContainer">
+        <input
+          matInput
+          placeholder="Input title"
+          [(ngModel)]="recipe.title"
+          name="title"
+          class="title"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="description">
+        <textarea
+          matInput
+          placeholder="Input description"
+          [(ngModel)]="recipe.description"
+          name="description"
+          class="inputDescription"
+        ></textarea>
+      </mat-form-field>
+      <button mat-flat-button color="primary" (click)="createRecipe()">
+        Add recipe
+      </button>
+    </form>
+
+    <form *ngIf="typeForm == 0" class="form">
+      <mat-form-field class="titleContainer">
+        <input
+          matInput
+          placeholder="Edit title"
+          [(ngModel)]="recipe.title"
+          name="title"
+          class="title"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="description">
+        <textarea
+          matInput
+          placeholder="Edit description"
+          [(ngModel)]="recipe.description"
+          name="description"
+          class="inputDescription"
+        ></textarea>
+      </mat-form-field>
+      <button mat-flat-button color="primary" (click)="putRecipe(recipe.id)">
+        Apply changes
+      </button>
+    </form>
+  </div>
+
+
+
+  <div class="ingredientsOuter" *ngIf="spinner == false">
+    <div class="ingredientsTitle"> INGREDIENTS </div>
+    <div class="ingredients">
+      <mat-list role="list" class="list">
+        <div class="ingredientsTitle" *ngIf="spinner == false"> Added: </div>
+          <mat-list-item role="listitem" *ngFor="let ingredient of recipe.ingredients">
+            <h3 class="ingredientName">{{ ingredient["name"] }}</h3>
+            <div class="separator"></div>
+            <button
+              mat-flat-button
+              color="primary"
+              class="button"
+              (click)="deleteIngredient(ingredient)"
+            >
+              -
+            </button>
+          </mat-list-item>
+        </mat-list>
+
+      <div class="ingredientSearch" *ngIf="spinner == false">
+        <app-ingredient
+          (eventIngredient)="selectedIngredient($event)"
+        ></app-ingredient>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<app-navbar *ngIf="userId > 0 && validateUser() == false"></app-navbar>
+<mat-spinner *ngIf="spinner == true" class="spinner"></mat-spinner>
+<div class="container" *ngIf="spinner == false">
+  <div class="userProfile">
+    <mat-card>
+      <mat-card>
+        <div>{{ user.username }}</div>
+        <div *ngIf="user.vege == true">Vegeterian - Yes</div>
+        <div *ngIf="user.vege == false">Vegeterian - No</div>
+      </mat-card>
+      <button
+        *ngIf="checkUser() == true"
+        mat-flat-button
+        color="primary"
+        (click)="editProfile()"
+        class="editButton"
+      >
+        Edit profile
+      </button>
+    </mat-card>
+  </div>
+  <app-recipe-tab class="userRecipes" [userId]="userId"></app-recipe-tab>
+</div>
