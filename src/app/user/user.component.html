@@ -16,6 +16,7 @@
         Delete recipe
       </button> -->
       <button
+        *ngIf="checkUser() == true"
         mat-flat-button
         color="primary"
         (click)="editProfile()"

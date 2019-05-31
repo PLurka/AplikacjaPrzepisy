@@ -6,9 +6,9 @@ import { Router } from "@angular/router";
 import { UserService } from "../user/services/user.service";
 
 @Component({
-  selector: 'app-recipe-tab',
-  templateUrl: './recipe-tab.component.html',
-  styleUrls: ['./recipe-tab.component.css']
+  selector: "app-recipe-tab",
+  templateUrl: "./recipe-tab.component.html",
+  styleUrls: ["./recipe-tab.component.css"]
 })
 export class RecipeTabComponent implements OnInit {
   spinner: boolean;
@@ -19,7 +19,7 @@ export class RecipeTabComponent implements OnInit {
   userRecipes;
   recipeCard: Recipe = new Recipe();
   dataSource;
-  displayedColumns: string[] = ["title", "vege", "show"];
+  displayedColumns: string[] = ["title", "vege", "author", "show"];
   constructor(
     private recipeService: RecipeService,
     private userService: UserService,
@@ -39,7 +39,9 @@ export class RecipeTabComponent implements OnInit {
   userId: number;
 
   prevPage() {
-    if (this.actualPage > 0) { this.actualPage -= 1; }
+    if (this.actualPage > 0) {
+      this.actualPage -= 1;
+    }
     this.getRecipes();
   }
 
@@ -53,11 +55,13 @@ export class RecipeTabComponent implements OnInit {
     this.recipeService
       .getRecipes(this.actualPage, this.actualLimit, this.actualSort)
       .subscribe(res => {
+        console.log(res);
         this.recipes = new Array<Recipe>();
-        for (const recipe of res['recipes']) {
+        for (const recipe of res["recipes"]) {
           this.recipes.push(recipe);
         }
         this.dataSource = new MatTableDataSource(this.recipes);
+        console.log(this.recipes);
         this.spinner = false;
       });
   }
@@ -73,11 +77,23 @@ export class RecipeTabComponent implements OnInit {
   }
 
   navigateRecipe(recipeId: string) {
-    this.router.navigate(['/recipe'], { queryParams: { id: recipeId } });
+    this.router.navigate(["/recipe"], { queryParams: { id: recipeId } });
   }
 
   navigateForm() {
-    this.router.navigate(['/new'], { queryParams: { typeForm: 1 } });
+    this.router.navigate(["/new"], { queryParams: { typeForm: 1 } });
+  }
+
+  navigateProfile(userId: string) {
+    if (JSON.parse(localStorage.getItem("user"))["id"] == userId) {
+      this.router.navigate(["/"]);
+    } else {
+      this.router.navigate(["/user"], {
+        queryParams: {
+          userId: userId
+        }
+      });
+    }
   }
 }
 // private paginator: MatPaginator;

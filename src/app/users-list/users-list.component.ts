@@ -42,7 +42,6 @@ export class UsersListComponent implements OnInit {
       .getUsers(this.actualPage, this.actualLimit)
       .subscribe(res => {
         this.users = new Array<User>();
-        console.log(res[0]);
         this.users = res;
         this.dataSource = new MatTableDataSource(this.users);
         this.spinner = false;
