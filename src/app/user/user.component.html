@@ -6,7 +6,7 @@
       <mat-card>
         <div>{{ user.username }}</div>
         <div *ngIf="user.vege == true">Vegeterian - Yes</div>
-        <div *ngIf="user.vege == true">Vegeterian - No</div>
+        <div *ngIf="user.vege == false">Vegeterian - No</div>
       </mat-card>
       <button
         *ngIf="checkUser() == true"
