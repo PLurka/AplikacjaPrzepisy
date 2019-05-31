@@ -14,8 +14,8 @@ export class RegisterService {
   };
   constructor(private httpClient: HttpClient) { }
 
-  register(username: string, email: string, password: string) {
-    const user = { username, email, password };
+  register(username: string, email: string, password: string, confirmPassword: string) {
+    const user = { username, email, password, confirmPassword };
     return this.httpClient.post(`${environment.apiUrl}/register`, JSON.stringify(user), this.httpOptions);
   }
 }

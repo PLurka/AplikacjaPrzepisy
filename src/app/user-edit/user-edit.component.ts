@@ -16,9 +16,9 @@ export class UserEditComponent implements OnInit {
   vege: boolean;
   options: string[] = ["Yes", "No"];
   pickedAnswer: string;
-  editDietForm: FormGroup;
-  editEmailForm: FormGroup;
+
   editPasswordForm: FormGroup;
+  editEmailForm: FormGroup;
   constructor(
     private formBuilder: FormBuilder,
     private userEditService: UserEditService,
@@ -26,17 +26,19 @@ export class UserEditComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.editPasswordForm = this.formBuilder.group(
+      {
+        password: ["", [Validators.required]],
+        confirmPassword: ["", [Validators.required]]
+      },
+      {
+        validator: MustMatch("password", "confirmPassword")
+      }
+    );
 
-    // this.editEmailForm = this.formBuilder.group({
-    //   email: ['', [Validators.required, Validators.email]]
-    // });
-
-    // this.editPasswordForm = this.formBuilder.group({
-    //   password: ['', [Validators.required]],
-    //   confirmPassword: ['', [Validators.required]],
-    // }, {
-    //   validator: MustMatch('password', 'confirmPassword')
-    // });
+    this.editEmailForm = this.formBuilder.group({
+      email: ["", [Validators.required, Validators.email]]
+    });
   }
 
   onEditDietSubmit() {
@@ -47,8 +49,48 @@ export class UserEditComponent implements OnInit {
       .putDiet(this.diet)
       .pipe(first())
       .subscribe(
-        data => {
+        response => {
           this.snackBar.open("Successfully changed your diet!", "OK", {
+            duration: 3000
+          });
+        },
+        (error: HttpErrorResponse) => {
+          console.log(error);
+          this.snackBar.open(error.error.message, "OK", {
+            duration: 3000
+          });
+        }
+      );
+  }
+
+  onEditPasswordSubmit() {
+    const password = this.editPasswordForm.value;
+    this.userEditService
+      .putPassword(password)
+      .pipe(first())
+      .subscribe(
+        response => {
+          this.snackBar.open("Successfully changed your password!", "OK", {
+            duration: 3000
+          });
+        },
+        (error: HttpErrorResponse) => {
+          this.snackBar.open(error.error.message, "OK", {
+            duration: 3000
+          });
+        }
+      );
+  }
+
+  onEditEmailSubmit() {
+    const email = this.editEmailForm.value;
+    console.log(email);
+    this.userEditService
+      .putEmail(email)
+      .pipe(first())
+      .subscribe(
+        response => {
+          this.snackBar.open("Successfully changed your email!", "OK", {
             duration: 3000
           });
         },

@@ -1,4 +1,18 @@
-.container {
+.vegeContainer {
+  display: flex;
+  margin: 10px auto;
+  width: 20%;
+  flex-direction: column;
+}
+
+.passwordContainer {
+  display: flex;
+  margin: 10px auto;
+  width: 20%;
+  flex-direction: column;
+}
+
+.emailContainer {
   display: flex;
   margin: 10px auto;
   width: 20%;
@@ -10,6 +24,6 @@
   flex-direction: column;
 }
 
-.form-container>* {
+.form-container > * {
   width: 100%;
 }

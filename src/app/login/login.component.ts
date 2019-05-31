@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
       if (res.token) {
         this.router.navigate(['/']);
       }}, (error: HttpErrorResponse) => {
-        this.snackBar.open(error.error.message, 'OK', {
+        this.snackBar.open("Wrong username/password!", 'OK', {
           duration: 3000
         });
       });

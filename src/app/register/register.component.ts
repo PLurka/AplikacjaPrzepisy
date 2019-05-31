@@ -56,12 +56,13 @@ export class RegisterComponent implements OnInit {
 
   onSubmit() {
     const formValue = this.registerForm.value;
+    console.log(formValue);
     // tslint:disable-next-line:max-line-length
-    this.registerService.register(formValue.username, formValue.email, formValue.password)
+    this.registerService.register(formValue.username, formValue.email, formValue.password, formValue.confirmPassword)
       .pipe(first())
       .subscribe(
         data => {
-          this.snackBar.open('Pomyślnie utworzyłeś konto', 'OK', {
+          this.snackBar.open('Account successfully created!', 'OK', {
             duration: 3000
           });
           this.router.navigate(['/login']);
