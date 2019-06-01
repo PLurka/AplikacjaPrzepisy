@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { Recipe } from "../recipe";
+import { Fridge } from "src/app/fridge/fridge";
 
 @Injectable({
   providedIn: "root"

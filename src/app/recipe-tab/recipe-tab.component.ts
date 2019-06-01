@@ -1,3 +1,4 @@
+import { Fridge } from "./../fridge/fridge";
 import { Component, OnInit, Input } from "@angular/core";
 import { MatTableDataSource } from "@angular/material";
 import { RecipeService } from "../recipe/services/recipe.service";
@@ -80,10 +81,6 @@ export class RecipeTabComponent implements OnInit {
     this.router.navigate(["/recipe"], { queryParams: { id: recipeId } });
   }
 
-  navigateForm() {
-    this.router.navigate(["/new"], { queryParams: { typeForm: 1 } });
-  }
-
   navigateProfile(userId: string) {
     if (JSON.parse(localStorage.getItem("user"))["id"] == userId) {
       this.router.navigate(["/"]);
@@ -96,28 +93,3 @@ export class RecipeTabComponent implements OnInit {
     }
   }
 }
-// private paginator: MatPaginator;
-// private sort: MatSort;
-
-// @ViewChild(MatSort) set matSort(ms: MatSort) {
-//   this.sort = ms;
-//   this.setDataSourceAttributes();
-// }
-
-// @ViewChild(MatPaginator) set matPaginator(mp: MatPaginator) {
-//   this.paginator = mp;
-//   this.setDataSourceAttributes();
-// }
-
-// setDataSourceAttributes() {
-//   this.dataSource.paginator = this.paginator;
-//   this.dataSource.sort = this.sort;
-
-//   if (this.paginator && this.sort) {
-//     this.applyFilter('');
-//   }
-// }
-
-// applyFilter(filterValue: string) {
-//   this.dataSource.filter = filterValue.trim().toLowerCase();
-// }

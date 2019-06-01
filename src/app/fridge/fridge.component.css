@@ -2,12 +2,16 @@
   display: flex;
 }
 
-.ingredientsList {
+.ingredientsLeft {
   flex: 1;
 }
 
 .fridge {
   flex: 2;
+}
+
+.ingredientsRight {
+  flex: 3;
 }
 
 .spinner{
