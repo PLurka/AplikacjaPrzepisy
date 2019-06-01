@@ -82,6 +82,7 @@ export class RecipeFormComponent implements OnInit {
   createRecipe(): void {
     this.spinner = true;
     this.recipe.vege = this.checkVege();
+    console.log(this.recipe);
     this.recipeService.createRecipe(this.recipe).subscribe(
       response => {
         this.recipe = new Recipe();
