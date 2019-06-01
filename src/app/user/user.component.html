@@ -1,6 +1,5 @@
 <app-navbar *ngIf="userId > 0 && validateUser() == false"></app-navbar>
 <mat-spinner *ngIf="spinner == true" class="spinner"></mat-spinner>
-<app-recipe-tab class="userRecipes" [userId]="userId"></app-recipe-tab>
 <div class="container" *ngIf="spinner == false">
   <div class="userProfile">
     <mat-card>
@@ -20,5 +19,7 @@
       </button>
     </mat-card>
   </div>
+
+  <app-recipe-tab class="userRecipes" [userId]="userId"></app-recipe-tab>
   
 </div>
