@@ -1,5 +1,5 @@
 <mat-spinner *ngIf="spinner == true" class="spinner"></mat-spinner>
-<div *ngIf="spinner == false">
+<div *ngIf="spinner == false && userRecipes.length > 0">
   <table  mat-table [dataSource]="dataSource"  matSort class="mat-elevation-z8" >
     <ng-container matColumnDef="title">
       <th mat-header-cell *matHeaderCellDef mat-header>Title</th>
@@ -57,7 +57,7 @@
   </button>
   <mat-form-field class="choose">
     <mat-label>Limit on page</mat-label>
-    <mat-select [(value)]="actualLimit">
+    <mat-select [(value)]="actualLimit" placeholder="None">
       <mat-option value="10" (click)="getRecipes()">10</mat-option>
       <mat-option value="20" (click)="getRecipes()">20</mat-option>
       <mat-option value="50" (click)="getRecipes()">50</mat-option>
@@ -74,3 +74,6 @@
     </mat-select>
   </mat-form-field>
   </div>
+<div *ngIf="spinner == false && userRecipes.length == 0" class="notAdded">
+  NIE DODANO JESZCZE ŻADNYCH PRZEPISÓW
+</div>

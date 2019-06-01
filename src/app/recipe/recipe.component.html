@@ -3,37 +3,53 @@
 <div class="container" *ngIf="spinner == false">
   <div class="get">
     <mat-card class="recipe" color="primary">
-      <mat-card class="recipeTitle">{{ recipeCard.title }}</mat-card>
+      <h3 class="recipeTitle">{{ recipeCard.title }}</h3>
       <div *ngIf="recipeCard.vege == true">Vege recipe - Yes</div>
       <div *ngIf="recipeCard.vege == false">Vege recipe - No</div>
-      <mat-list>
-        <mat-list-item *ngFor="let ingredient of recipeCard.ingredients">
-          {{ ingredient.name }}
-        </mat-list-item>
-      </mat-list>
 
-      <mat-card class="cardDescription">{{ recipeCard.description }}</mat-card>
-      <button
-        *ngIf="checkUser() == true"
-        mat-flat-button
-        color="primary"
-        (click)="openDialog()"
-        class="deleteButton"
-      >
-        Delete recipe
-      </button>
-      <button
-        *ngIf="checkUser() == true"
-        mat-flat-button
-        color="primary"
-        (click)="editRecipe()"
-        class="editButton"
-      >
-        Edit recipe
-      </button>
+      <div class="separator"></div>
+      
+      <img src="https://r-scale-a4.dcs.redcdn.pl/scale/o2/tvn/web-content/m/p96/i/dfd7468ac613286cdbb40872c8ef3b06/e7c4f1e4-a075-11e2-9b34-0025b511229e.jpg?type=1&srcmode=0&srcx=42%2F100&srcy=580%2F1000&srcw=95%2F100&srch=39%2F100&dstw=640&dsth=360&quality=85">
+
+      <div class="inside">
+        <mat-card class="ingredients">
+          <mat-list >
+            <mat-list-item *ngFor="let ingredient of recipeCard.ingredients">
+              - {{ ingredient.name }}
+            </mat-list-item>
+          </mat-list>
+        </mat-card>
+
+        <mat-card class="cardDescription">{{ recipeCard.description }}</mat-card>
+      </div>
+      
+      <div style="cursor: pointer" class="author" (click)="navigateProfile()">~{{
+          recipeCard.user["username"]
+        }}</div>
+
+      <div class="buttons">
+        <button
+          *ngIf="checkUser() == true"
+          mat-flat-button
+          color="primary"
+          style="margin: 10px auto; width: fit-content;"
+          (click)="openDialog()"
+          class="deleteButton"
+        >
+          Delete recipe
+        </button>
+        <button
+          *ngIf="checkUser() == true"
+          mat-flat-button
+          color="primary"
+          style="margin: 10px auto; width: fit-content;"
+          (click)="editRecipe()"
+          class="editButton"
+        >
+          Edit recipe
+        </button>
+      </div>
+
     </mat-card>
   </div>
-  <a style="cursor: pointer" (click)="navigateProfile()">{{
-    recipeCard.user["username"]
-  }}</a>
 </div>

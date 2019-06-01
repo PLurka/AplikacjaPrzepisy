@@ -65,6 +65,7 @@ export class RecipeTabComponent implements OnInit {
         for (const recipe of res['recipes']) {
           this.recipes.push(recipe);
         }
+        this.userRecipes=this.recipes;
         this.dataSource = new MatTableDataSource(this.recipes);
         console.log(this.recipes);
         this.spinner = false;

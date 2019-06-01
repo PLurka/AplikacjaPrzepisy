@@ -1,21 +1,35 @@
 .recipe{
-  max-width: 300px;
-  min-height: 360px;
+  width: 50%;
+  min-height: 50%;
   margin: 4px;
-  vertical-align: center;
+  display: flex;
+  flex-direction: column;
   text-align: center;
-
 }
 
 .recipeTitle {
-  background-color: rgb(194,24,91)
+  /*background-color: rgb(194,24,91)*/
 }
+
+.separator{
+  height: 5%;
+}
+
+.inside{
+  display: flex;
+}
+
+.ingredients{
+  flex: 1
+}
+
 .cardDescription{
-  position: absolute;
-  bottom: 50px;
+  /*position: absolute;
+  bottom: 50px;*/
   min-width: -20px;
   min-height: 200px;
-  max-width: 270px;
+  
+  flex: 1;
 }
 
 .container{
@@ -24,30 +38,17 @@
 
 .get{
   flex: 1;
+  display: flex;
+  justify-content: center;
+  text-align: center;
 }
 
-.post{
-  flex: 2;
+.author{
+  text-align: right;
 }
 
-table {
-  width: 100%;
-}
-
-.inputDescription{
-  min-height: 100px;
-}
-
-.deleteButton{
-  position: absolute;
-  bottom: 4px;
-  left: 20px;
-}
-
-.editButton{
-  position: absolute;
-  bottom: 4px;
-  right: 20px;
+.buttons{
+  display: flex;
 }
 
 .spinner{
