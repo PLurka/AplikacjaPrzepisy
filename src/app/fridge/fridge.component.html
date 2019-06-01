@@ -12,12 +12,11 @@
         <h3 class="ingredientName">{{ ingredient["name"] }}</h3>
         <div class="separator"></div>
         <button
-          mat-flat-button
+          mat-mini-fab
           color="primary"
-          class="button"
+          class="buttonDes"
           (click)="deleteIngredient(ingredient.id)"
-        >
-          -
+        > -
         </button>
       </mat-list-item>
     </mat-list>
@@ -25,7 +24,7 @@
       Search for recipes
     </button>
   </div>
-  <button mat-flat-button color="primary" class="button" (click)="clearFridge()">
+  <button mat-flat-button color="primary" class="clearButton" (click)="clearFridge()">
     Clear Fridge
   </button>
 </div>

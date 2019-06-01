@@ -7,9 +7,9 @@ import { Recipe } from "../recipe/recipe";
 import { Router } from "@angular/router";
 
 @Component({
-  selector: "app-fridge",
-  templateUrl: "./fridge.component.html",
-  styleUrls: ["./fridge.component.css"]
+  selector: 'app-fridge',
+  templateUrl: './fridge.component.html',
+  styleUrls: ['./fridge.component.css']
 })
 export class FridgeComponent implements OnInit {
   spinner: boolean;
@@ -70,8 +70,9 @@ export class FridgeComponent implements OnInit {
   }
 
   selectedIngredient(ingredient: Ingredient) {
-    if (this.validateIngredient(ingredient.id) == true)
+    if (this.validateIngredient(ingredient.id) === true) {
       this.addIngredient(ingredient.id);
+    }
   }
 
   validateIngredient(ingredientId: string): boolean {
@@ -134,7 +135,7 @@ export class FridgeComponent implements OnInit {
   clearFridge() {
     this.spinner = true;
     this.fridgeService.clearFridge().subscribe(response => {
-      this.snackBar.open("Fridge successfully cleared!", "OK", {
+      this.snackBar.open('Fridge successfully cleared!', 'OK', {
         duration: 2000
       });
       this.getFridge();
