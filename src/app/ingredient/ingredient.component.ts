@@ -1,14 +1,18 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { Ingredient } from './ingredient';
-import { IngredientService } from './services/ingredient.service';
+import { Component, OnInit, Output, EventEmitter } from "@angular/core";
+import { Ingredient } from "./ingredient";
+import { IngredientService } from "./services/ingredient.service";
+import { MatSnackBar } from "@angular/material";
 
 @Component({
-  selector: 'app-ingredient',
-  templateUrl: './ingredient.component.html',
-  styleUrls: ['./ingredient.component.css']
+  selector: "app-ingredient",
+  templateUrl: "./ingredient.component.html",
+  styleUrls: ["./ingredient.component.css"]
 })
 export class IngredientComponent implements OnInit {
-  constructor(private ingredientService: IngredientService) { }
+  constructor(
+    private ingredientService: IngredientService,
+    private snackBar: MatSnackBar
+  ) {}
 
   input: string;
   ingredients = new Array<Ingredient>();
@@ -16,8 +20,7 @@ export class IngredientComponent implements OnInit {
   @Output()
   eventIngredient = new EventEmitter<object>();
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   addIngredient(ingredient: Ingredient) {
     console.log(ingredient);
@@ -25,11 +28,16 @@ export class IngredientComponent implements OnInit {
   }
 
   searchIngredients(input: string) {
-    this.ingredientService.searchIngredients(input).subscribe(res => {
-      console.log(res);
-      this.ingredients = res['results'];
-      console.log(this.ingredients);
-    });
+    if (input == "" || input == null) {
+      this.snackBar.open("You need to enter something!", "OK", {
+        duration: 3000
+      });
+    } else {
+      this.ingredientService.searchIngredients(input).subscribe(res => {
+        console.log(res);
+        this.ingredients = res["results"];
+        console.log(this.ingredients);
+      });
+    }
   }
-
 }

@@ -1,5 +1,18 @@
 <mat-spinner *ngIf="spinner == true" class="spinner"></mat-spinner>
 <div *ngIf="spinner == false">
+  <form class="example-form">
+    <mat-form-field class="example-full-width" style="padding:5px" >
+      <input
+        matInput
+        placeholder="Search for recipes"
+        [(ngModel)]="input"
+        name="name"
+      />
+    </mat-form-field>
+    <button mat-flat-button color="primary" (click)="searchRecipes(input)" style ="font-size: 10px">
+      Search
+    </button>
+  </form>
   <table  mat-table [dataSource]="dataSource"  matSort class="mat-elevation-z8" >
     <ng-container matColumnDef="title">
       <th mat-header-cell *matHeaderCellDef mat-header>Title</th>

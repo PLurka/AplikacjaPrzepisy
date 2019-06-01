@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { MatTableDataSource } from "@angular/material";
+import { MatTableDataSource, MatSnackBar } from "@angular/material";
 import { RecipeService } from "../recipe/services/recipe.service";
 import { Recipe } from "../recipe/recipe";
 import { Router } from "@angular/router";
@@ -11,19 +11,21 @@ import { UserService } from "../user/services/user.service";
   styleUrls: ['./recipe-tab.component.css']
 })
 export class RecipeTabComponent implements OnInit {
+  input: string;
   spinner: boolean;
   actualPage: number;
   actualLimit: number;
   actualSort: string;
   recipes;
-  userRecipes;
   recipeCard: Recipe = new Recipe();
   dataSource;
+  typeTab: string;
   displayedColumns: string[] = ['title', 'vege', 'author', 'show'];
   constructor(
     private recipeService: RecipeService,
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit() {
@@ -42,17 +44,26 @@ export class RecipeTabComponent implements OnInit {
   @Input()
   userId: number;
 
-
   prevPage() {
     if (this.actualPage > 0) {
       this.actualPage -= 1;
     }
-    this.getRecipes();
+    if(this.typeTab == "all")
+      this.getRecipes();
+    // if(this.typeTab == "user")
+    //   this.getUserRecipes(this.userId);
+    // if(this.typeTab == "input")
+    //   this.searchRecipes(this.input);
   }
 
   nextPage() {
     this.actualPage += 1;
-    this.getRecipes();
+    if(this.typeTab == "all")
+      this.getRecipes();
+    // if(this.typeTab == "user")
+    //   this.getUserRecipes(this.userId);
+    // if(this.typeTab == "input")
+    //   this.searchRecipes(this.input);
   }
 
   getRecipes() {
@@ -68,19 +79,40 @@ export class RecipeTabComponent implements OnInit {
         this.dataSource = new MatTableDataSource(this.recipes);
         console.log(this.recipes);
         this.spinner = false;
+        this.typeTab = "all";
       });
   }
 
   getUserRecipes(userId: number) {
     this.spinner = true;
-    this.userService.getUserRecipes(userId).subscribe(res => {
-      this.userRecipes = new Array<Recipe>();
-      this.userRecipes = res;
-      if (this.userRecipes.length > 0) {
-        this.dataSource = new MatTableDataSource(this.userRecipes);
+    this.userService.getUserRecipes(userId).subscribe(response => {
+      this.recipes = new Array<Recipe>();
+      this.recipes = response;
+      if (this.recipes.length > 0) {
+        this.dataSource = new MatTableDataSource(this.recipes);
       }
       this.spinner = false;
+      this.typeTab = "user";
     });
+  }
+
+  searchRecipes(input: string) {
+    if(input == null) {
+      this.snackBar.open('You need to enter something!', 'OK', {
+        duration: 3000
+      });
+    } else {
+      this.spinner = true;
+      this.recipeService.searchRecipes(input).subscribe(response => {
+        this.recipes = new Array<Recipe>();
+        this.recipes = response["recipes"];
+        if (this.recipes.length > 0) {
+          this.dataSource = new MatTableDataSource(this.recipes);
+        }
+        this.spinner = false;
+        this.typeTab = "input";
+    })
+    }
   }
 
   navigateRecipe(recipeId: string) {
