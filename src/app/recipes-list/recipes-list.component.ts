@@ -1,10 +1,10 @@
 import { ActivatedRoute } from '@angular/router';
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: "app-recipes-list",
-  templateUrl: "./recipes-list.component.html",
-  styleUrls: ["./recipes-list.component.css"]
+  selector: 'app-recipes-list',
+  templateUrl: './recipes-list.component.html',
+  styleUrls: ['./recipes-list.component.css']
 })
 export class RecipesListComponent implements OnInit {
   userId: string;
@@ -12,7 +12,7 @@ export class RecipesListComponent implements OnInit {
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
-      this.userId = params["userId"];
+      this.userId = params['userId'];
     });
   }
 }

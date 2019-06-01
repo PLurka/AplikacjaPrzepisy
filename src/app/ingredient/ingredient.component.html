@@ -1,5 +1,5 @@
 <form class="example-form">
-  <mat-form-field class="example-full-width">
+  <mat-form-field class="example-full-width" style="padding:5px" >
     <input
       matInput
       placeholder="Search for ingredient"
@@ -7,7 +7,7 @@
       name="name"
     />
   </mat-form-field>
-  <button mat-flat-button color="primary" (click)="searchIngredients(input)">
+  <button mat-flat-button color="primary" (click)="searchIngredients(input)" style ="font-size: 10px">
     Search
   </button>
 </form>
@@ -16,7 +16,7 @@
   <mat-list-item role="listitem" *ngFor="let ingredient of ingredients">{{
     ingredient.name
   }}
-  <button mat-flat-button color="primary" (click)="addIngredient(ingredient)">
+  <button mat-flat-button color="primary" class="spaceBetween" (click)="addIngredient(ingredient)">
     Add ingredient
   </button>
 </mat-list-item>

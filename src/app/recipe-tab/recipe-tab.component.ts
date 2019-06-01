@@ -1,9 +1,9 @@
-import { Component, OnInit, Input } from "@angular/core";
-import { MatTableDataSource } from "@angular/material";
-import { RecipeService } from "../recipe/services/recipe.service";
-import { Recipe } from "../recipe/recipe";
-import { Router } from "@angular/router";
-import { UserService } from "../user/services/user.service";
+import { Component, OnInit, Input } from '@angular/core';
+import { MatTableDataSource } from '@angular/material';
+import { RecipeService } from '../recipe/services/recipe.service';
+import { Recipe } from '../recipe/recipe';
+import { Router } from '@angular/router';
+import { UserService } from '../user/services/user.service';
 
 @Component({
   selector: 'app-recipe-tab',
@@ -11,6 +11,8 @@ import { UserService } from "../user/services/user.service";
   styleUrls: ['./recipe-tab.component.css']
 })
 export class RecipeTabComponent implements OnInit {
+  @Input()
+  userId: number;
   spinner: boolean;
   actualPage: number;
   actualLimit: number;
@@ -19,7 +21,7 @@ export class RecipeTabComponent implements OnInit {
   userRecipes;
   recipeCard: Recipe = new Recipe();
   dataSource;
-  displayedColumns: string[] = ["title", "vege", "show"];
+  displayedColumns: string[] = ['title', 'vege', 'show'];
   constructor(
     private recipeService: RecipeService,
     private userService: UserService,
@@ -30,13 +32,10 @@ export class RecipeTabComponent implements OnInit {
     this.spinner = true;
     this.actualPage = 0;
     this.actualLimit = 10;
-    this.actualSort = "Title";
-    if (this.userId == 0) this.getRecipes();
-    else this.getUserRecipes(this.userId);
+    this.actualSort = 'Title';
+    if (this.userId === 0) { this.getRecipes(); } else { this.getUserRecipes(this.userId); }
   }
 
-  @Input()
-  userId: number;
 
   prevPage() {
     if (this.actualPage > 0) { this.actualPage -= 1; }
@@ -67,10 +66,14 @@ export class RecipeTabComponent implements OnInit {
     this.userService.getUserRecipes(userId).subscribe(res => {
       this.userRecipes = new Array<Recipe>();
       this.userRecipes = res;
-      this.dataSource = new MatTableDataSource(this.userRecipes);
+      if (this.userRecipes.length > 0) {
+        this.dataSource = new MatTableDataSource(this.userRecipes);
+      }
       this.spinner = false;
     });
   }
+
+
 
   navigateRecipe(recipeId: string) {
     this.router.navigate(['/recipe'], { queryParams: { id: recipeId } });

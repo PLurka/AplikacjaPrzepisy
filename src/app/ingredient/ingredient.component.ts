@@ -8,26 +8,26 @@ import { IngredientService } from './services/ingredient.service';
   styleUrls: ['./ingredient.component.css']
 })
 export class IngredientComponent implements OnInit {
+  constructor(private ingredientService: IngredientService) { }
 
   input: string;
   ingredients = new Array<Ingredient>();
-  constructor(private ingredientService: IngredientService) { }
-
-  ngOnInit() {
-  }
 
   @Output()
   eventIngredient = new EventEmitter<object>();
 
-  addIngredient(ingredient: Ingredient){
+  ngOnInit() {
+  }
+
+  addIngredient(ingredient: Ingredient) {
     console.log(ingredient);
     this.eventIngredient.emit(ingredient);
   }
 
-  searchIngredients(input: string){
+  searchIngredients(input: string) {
     this.ingredientService.searchIngredients(input).subscribe(res => {
       console.log(res);
-      this.ingredients = res["results"];
+      this.ingredients = res['results'];
       console.log(this.ingredients);
     });
   }

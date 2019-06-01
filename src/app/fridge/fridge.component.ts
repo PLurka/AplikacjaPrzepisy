@@ -1,12 +1,12 @@
-import { Component, OnInit } from "@angular/core";
-import { Ingredient } from "../ingredient/ingredient";
-import { FridgeService } from "./services/fridge.service";
-import { MatSnackBar } from "@angular/material";
+import { Component, OnInit } from '@angular/core';
+import { Ingredient } from '../ingredient/ingredient';
+import { FridgeService } from './services/fridge.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
-  selector: "app-fridge",
-  templateUrl: "./fridge.component.html",
-  styleUrls: ["./fridge.component.css"]
+  selector: 'app-fridge',
+  templateUrl: './fridge.component.html',
+  styleUrls: ['./fridge.component.css']
 })
 export class FridgeComponent implements OnInit {
   spinner: boolean;
@@ -22,14 +22,15 @@ export class FridgeComponent implements OnInit {
   }
 
   selectedIngredient(ingredient: Ingredient) {
-    if (this.validateIngredient(ingredient.id) == true)
+    if (this.validateIngredient(ingredient.id) === true) {
       this.addIngredient(ingredient.id);
+    }
   }
 
   validateIngredient(ingredientId: string): boolean {
     for (let i = 0; i < this.fridge.length; i++) {
-      if (this.fridge[i].id == ingredientId) {
-        this.snackBar.open("Ingredient already exists in your fridge!", "OK", {
+      if (this.fridge[i].id === ingredientId) {
+        this.snackBar.open('Ingredient already exists in your fridge!', 'OK', {
           duration: 2000
         });
         return false;
@@ -41,9 +42,9 @@ export class FridgeComponent implements OnInit {
   getFridge() {
     this.fridgeService.getFridge().subscribe(response => {
       this.fridge = new Array<Ingredient>();
-      for (let i = 0; i < response["ingredients"].length; i++) {
+      for (let i = 0; i < response['ingredients'].length; i++) {
         this.fridge[i] = new Ingredient();
-        this.fridge[i] = response["ingredients"][i]["ingredient"];
+        this.fridge[i] = response['ingredients'][i]['ingredient'];
       }
       this.spinner = false;
     });
@@ -68,7 +69,7 @@ export class FridgeComponent implements OnInit {
   clearFridge() {
     this.spinner = true;
     this.fridgeService.clearFridge().subscribe(response => {
-      this.snackBar.open("Fridge successfully cleared!", "OK", {
+      this.snackBar.open('Fridge successfully cleared!', 'OK', {
         duration: 2000
       });
       this.getFridge();
