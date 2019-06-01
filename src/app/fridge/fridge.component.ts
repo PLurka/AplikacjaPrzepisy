@@ -129,6 +129,12 @@ export class FridgeComponent implements OnInit {
       console.log(response);
       this.getFridge();
       this.recipes = false;
+    }, (error) => {
+      console.log(error);
+      this.snackBar.open('Ingredient already exists in your fridge!', 'OK', {
+        duration: 2000
+      });
+      this.spinner = false;
     });
   }
 

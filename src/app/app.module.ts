@@ -28,6 +28,7 @@ import { FridgeComponent } from './fridge/fridge.component';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { GoodbyeComponent } from './goodbye/goodbye.component';
+import { IngredientsPageComponent } from './ingredients-page/ingredients-page.component';
 
 const MaterialModules = [
   MatToolbarModule,
@@ -67,7 +68,8 @@ const MaterialModules = [
     FridgeComponent,
     ConfirmationDialogComponent,
     WelcomeComponent,
-    GoodbyeComponent
+    GoodbyeComponent,
+    IngredientsPageComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -92,7 +94,8 @@ const MaterialModules = [
       { path: 'users', canActivate: [AuthGuardService], component: UsersListComponent },
       { path: 'user', canActivate: [AuthGuardService], component: UserComponent },
       { path: 'edituser', canActivate: [AuthGuardService], component: UserEditComponent },
-      { path: 'fridge', canActivate: [AuthGuardService], component: FridgeComponent }
+      { path: 'fridge', canActivate: [AuthGuardService], component: FridgeComponent },
+      { path: 'ingredients', canActivate: [AuthGuardService], component: IngredientsPageComponent }
     ]),
   ],
 

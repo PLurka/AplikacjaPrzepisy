@@ -1,0 +1,64 @@
+<app-navbar></app-navbar>
+<form class="example-form">
+  <mat-form-field class="example-full-width" style="padding:5px" >
+    <input
+      matInput
+      placeholder="Get ingredient"
+      [(ngModel)]="inputIdIngredient"
+      name="name"
+    />
+  </mat-form-field>
+  <button mat-flat-button color="primary" (click)="getIngredient()" style ="font-size: 10px">
+    Show ingredient
+  </button>
+  <button mat-flat-button color="primary" (click)="create()" style ="font-size: 10px">
+    Create
+  </button>
+  <button mat-flat-button color="primary" (click)="edit()" style ="font-size: 10px">
+    Edit
+  </button>
+  <button mat-flat-button color="primary" (click)="getIngredient()" style ="font-size: 10px">
+    Delete ingredient
+  </button>
+  <button mat-flat-button color="primary" (click)="submit()" style ="font-size: 10px">
+    Submit
+  </button>
+</form>
+
+<div>
+  <mat-card>
+      <mat-form-field class="name">
+          <input
+            matInput
+            placeholder="Name"
+            [(ngModel)]="ingredient.name"
+            name="name"
+          />
+        </mat-form-field>
+  </mat-card>
+  <mat-card>
+      <mat-form-field class="name">
+          <input
+            matInput
+            placeholder="Vege"
+            [(ngModel)]="ingredient.vege"
+            name="name"
+          />
+        </mat-form-field>
+  </mat-card>
+</div>
+
+<!--
+<form class="example-form">
+    <mat-form-field class="example-full-width" style="padding:5px" >
+      <input
+        matInput
+        placeholder="Search for recipes"
+        [(ngModel)]="input"
+        name="name"
+      />
+    </mat-form-field>
+    <button mat-flat-button color="primary" (click)="searchRecipes(input)" style ="font-size: 10px">
+      Search
+    </button>
+  </form> -->

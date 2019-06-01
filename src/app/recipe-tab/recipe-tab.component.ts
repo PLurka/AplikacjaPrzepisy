@@ -19,7 +19,7 @@ export class RecipeTabComponent implements OnInit {
   recipes;
   recipeCard: Recipe = new Recipe();
   dataSource;
-  typeTab: string;
+  typeTab: number;
   displayedColumns: string[] = ['title', 'vege', 'author', 'show'];
   constructor(
     private recipeService: RecipeService,
@@ -48,22 +48,14 @@ export class RecipeTabComponent implements OnInit {
     if (this.actualPage > 0) {
       this.actualPage -= 1;
     }
-    if(this.typeTab == "all")
+    if(this.typeTab == 1)
       this.getRecipes();
-    // if(this.typeTab == "user")
-    //   this.getUserRecipes(this.userId);
-    // if(this.typeTab == "input")
-    //   this.searchRecipes(this.input);
   }
 
   nextPage() {
     this.actualPage += 1;
-    if(this.typeTab == "all")
+    if(this.typeTab == 1)
       this.getRecipes();
-    // if(this.typeTab == "user")
-    //   this.getUserRecipes(this.userId);
-    // if(this.typeTab == "input")
-    //   this.searchRecipes(this.input);
   }
 
   getRecipes() {
@@ -79,7 +71,7 @@ export class RecipeTabComponent implements OnInit {
         this.dataSource = new MatTableDataSource(this.recipes);
         console.log(this.recipes);
         this.spinner = false;
-        this.typeTab = "all";
+        this.typeTab = 1;
       });
   }
 
@@ -92,7 +84,7 @@ export class RecipeTabComponent implements OnInit {
         this.dataSource = new MatTableDataSource(this.recipes);
       }
       this.spinner = false;
-      this.typeTab = "user";
+      this.typeTab = 0;
     });
   }
 
@@ -110,7 +102,7 @@ export class RecipeTabComponent implements OnInit {
           this.dataSource = new MatTableDataSource(this.recipes);
         }
         this.spinner = false;
-        this.typeTab = "input";
+        this.typeTab = 0;
     })
     }
   }
