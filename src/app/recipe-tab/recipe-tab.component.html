@@ -94,6 +94,10 @@
   </div>
 
   </div>
-<div *ngIf="spinner == false && recipes.length == 0" class="notAdded">
-  NIE DODANO JESZCZE ŻADNYCH PRZEPISÓW
+<div *ngIf="spinner == false && recipes.length == 0 && typeTab == 2" class="notAdded">
+  NO RECIPES AVAILABLE
 </div>
+<div *ngIf="spinner == false && recipes.length == 0 && typeTab == 0" class="notAdded">
+  NO RECIPES ADDED
+</div>
+

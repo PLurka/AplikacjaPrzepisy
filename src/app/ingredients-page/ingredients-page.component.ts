@@ -71,7 +71,11 @@ export class IngredientsPageComponent implements OnInit {
         this.editButton = true;
         this.createEdit = false;
         this.deleteButton = true;
-      });
+      }, (error => {
+        this.snackBar.open("No ingredient for this id!", "OK", {
+          duration: 3000
+        });
+      }));
     }
   }
 
@@ -125,9 +129,15 @@ export class IngredientsPageComponent implements OnInit {
     this.ingredientService
       .searchIngredients(this.inputNameIngredient)
       .subscribe(response => {
-        console.log(response);
-        this.ingredientsList = response["results"];
-        this.list = true;
+        if(response["results"].length == 0){
+          this.snackBar.open("No ingredients for your input!", "OK", {
+            duration: 3000
+          });
+        } else {
+          this.ingredientsList = response["results"];
+          this.list = true;
+        }
+
       });
     }
   }
