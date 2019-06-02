@@ -41,9 +41,16 @@
 </div>
 
 <div *ngIf="spinner == false && recipes == true" class="array">
-  <mat-form-field>
-    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  <!--<mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter"
+        matInput 
+        [(ngModel)]="input"
+    >
   </mat-form-field>
+  <button mat-flat-button color="primary" (click)="applyFilter(input)" style ="font-size: 10px">
+      Apply
+  </button>
+  -->
   <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
     <ng-container matColumnDef="title">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Title</th>
