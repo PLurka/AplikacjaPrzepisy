@@ -7,17 +7,32 @@
         <div>{{ user.username }}</div>
         <div *ngIf="user.vege == true">Vegeterian - Yes</div>
         <div *ngIf="user.vege == false">Vegeterian - No</div>
-        <a href="/fridge" style="text-decoration: none; color: blueviolet; font-size: 20px;">My Fridge</a>
       </mat-card>
-      <button
-        *ngIf="checkUser() == true"
-        mat-flat-button
-        color="primary"
-        (click)="editProfile()"
-        class="editButton"
-      >
-        Edit profile
-      </button>
+
+      <div class="buttons">
+        <div class="separator"></div>
+        <button
+          *ngIf="checkUser() == true"
+          mat-flat-button
+          color="primary"
+          (click)="editProfile()"
+          class="editButton"
+        >
+          Edit profile
+        </button>
+        <div class="separator"></div>
+        <button
+          *ngIf="checkUser() == true"
+          mat-flat-button
+          color="primary"
+          (click)="goToFridge()"
+          class="fridgeButton"
+        >
+          My Fridge
+        </button>
+        <div class="separator"></div>
+      </div>
+
     </mat-card>
   </div>
 

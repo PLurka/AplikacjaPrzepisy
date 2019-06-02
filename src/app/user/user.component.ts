@@ -62,6 +62,10 @@ export class UserComponent implements OnInit {
     this.router.navigate(["/edituser"]);
   }
 
+  goToFridge(){
+    this.router.navigate(["/fridge"]);
+  }
+
   navigateRecipe(recipeId: string) {
     this.router.navigate(["/recipe"], { queryParams: { id: recipeId } });
   }

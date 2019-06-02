@@ -24,3 +24,21 @@ table {
 .userRecipes{
   flex: 2;
 }
+
+.buttons{
+  display: flex;
+}
+
+.editButton{
+  min-width: fit-content;
+  flex: 1;
+}
+
+.fridgeButton{
+  min-width: fit-content;
+  flex: 1;
+}
+
+.separator{
+  flex: 1;
+}
