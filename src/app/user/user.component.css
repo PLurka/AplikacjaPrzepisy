@@ -39,6 +39,11 @@ table {
   flex: 1;
 }
 
+.link{
+  color: white;
+  text-decoration: none;
+}
+
 .separator{
   flex: 1;
 }

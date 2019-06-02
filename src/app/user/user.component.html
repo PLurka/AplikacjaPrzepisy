@@ -25,10 +25,9 @@
           *ngIf="checkUser() == true"
           mat-flat-button
           color="primary"
-          (click)="goToFridge()"
           class="fridgeButton"
         >
-          My Fridge
+          <a href="/fridge" class="link">My Fridge</a>
         </button>
         <div class="separator"></div>
       </div>
