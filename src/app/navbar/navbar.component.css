@@ -6,3 +6,8 @@
   position: absolute;
   right: 20px;
 }
+
+.link{
+  color: black;
+  text-decoration: none;
+}
