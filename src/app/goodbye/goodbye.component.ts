@@ -12,7 +12,7 @@ export class GoodbyeComponent implements OnInit {
     private router: Router
   ) { }
 
-  ngOnInit() { 
+  ngOnInit() {
   }
 
   login() {

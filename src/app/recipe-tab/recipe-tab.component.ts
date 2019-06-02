@@ -58,6 +58,10 @@ export class RecipeTabComponent implements OnInit {
       this.getRecipes();
   }
 
+  allRecipes() {
+    window.location.reload();
+  }
+
   getRecipes() {
     this.spinner = true;
     this.recipeService

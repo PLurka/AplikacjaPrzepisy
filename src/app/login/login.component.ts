@@ -14,6 +14,7 @@ import { LoginService } from './services/login.service';
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
+  reloadHelper: boolean;
 
   constructor(private loginService: LoginService,
     private router: Router,
