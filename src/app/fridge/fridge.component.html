@@ -3,7 +3,7 @@
 <div *ngIf="spinner == false" class="overall">
 
   <div class="container">
-    
+
     <mat-card class="fridge">
       <mat-list role="list" >
         <div class="ingredientsTitle">My fridge:</div>
@@ -19,7 +19,7 @@
         </mat-list-item>
       </mat-list>
     </mat-card>
-    
+
     <mat-card class="ingredientsLeft">
       <app-ingredient
         (eventIngredient)="selectedIngredient($event)"

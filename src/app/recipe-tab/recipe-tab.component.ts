@@ -106,7 +106,7 @@ export class RecipeTabComponent implements OnInit {
           this.dataSource = new MatTableDataSource(this.recipes);
         }
         this.spinner = false;
-        this.typeTab = 0;
+        this.typeTab = 2;
     })
     }
   }
