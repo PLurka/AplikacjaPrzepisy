@@ -11,14 +11,20 @@
   <button mat-flat-button color="primary" (click)="getIngredient()" style ="font-size: 10px">
     Show ingredient
   </button>
-  <button mat-flat-button color="primary" (click)="create()" style ="font-size: 10px">
-    Create
-  </button>
-  <button mat-flat-button color="primary" (click)="edit()" style ="font-size: 10px">
+  <button *ngIf="editButton == false" mat-flat-button color="primary" style ="font-size: 10px" disabled>
     Edit
   </button>
-  <button mat-flat-button color="primary" (click)="getIngredient()" style ="font-size: 10px">
-    Delete ingredient
+  <button *ngIf="editButton == true" mat-flat-button color="primary" (click)="edit()" style ="font-size: 10px">
+    Edit
+  </button>
+  <button *ngIf="deleteButton == false" mat-flat-button color="primary" style ="font-size: 10px" disabled>
+    Delete
+  </button>
+  <button *ngIf="deleteButton == true" mat-flat-button color="primary" (click)="getIngredient()" style ="font-size: 10px">
+    Delete
+  </button>
+  <button mat-flat-button color="primary" (click)="create()" style ="font-size: 10px">
+    Create
   </button>
   <button mat-flat-button color="primary" (click)="submit()" style ="font-size: 10px">
     Submit
@@ -35,8 +41,6 @@
             name="name"
           />
         </mat-form-field>
-  </mat-card>
-  <mat-card>
       <mat-form-field class="name">
           <input
             matInput
@@ -48,17 +52,27 @@
   </mat-card>
 </div>
 
-<!--
+
 <form class="example-form">
-    <mat-form-field class="example-full-width" style="padding:5px" >
-      <input
-        matInput
-        placeholder="Search for recipes"
-        [(ngModel)]="input"
-        name="name"
-      />
-    </mat-form-field>
-    <button mat-flat-button color="primary" (click)="searchRecipes(input)" style ="font-size: 10px">
-      Search
-    </button>
-  </form> -->
+  <mat-form-field class="example-full-width" style="padding:5px" >
+    <input
+      matInput
+      placeholder="Search for ingredients"
+      [(ngModel)]="inputNameIngredient"
+      name="name"
+    />
+  </mat-form-field>
+  <button mat-flat-button color="primary" (click)="searchIngredients()" style ="font-size: 10px">
+    Search
+  </button>
+</form>
+
+<mat-list *ngIf="list == true" role="list">
+  <mat-list-item role="listitem" *ngFor="let ingredient of ingredientsList">{{
+    ingredient.name
+  }}
+  <button mat-flat-button color="primary" class="spaceBetween" (click)="editListIngredient(ingredient)">
+    Edit
+  </button>
+</mat-list-item>
+</mat-list>
