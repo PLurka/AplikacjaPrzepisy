@@ -1,15 +1,20 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { Ingredient } from "../ingredient/ingredient";
 import { FridgeService } from "./services/fridge.service";
-import { MatSnackBar, MatTableDataSource, MatSort, MatPaginator } from "@angular/material";
+import {
+  MatSnackBar,
+  MatTableDataSource,
+  MatSort,
+  MatPaginator
+} from "@angular/material";
 import { Fridge } from "./fridge";
 import { Recipe } from "../recipe/recipe";
 import { Router } from "@angular/router";
 
 @Component({
-  selector: 'app-fridge',
-  templateUrl: './fridge.component.html',
-  styleUrls: ['./fridge.component.css']
+  selector: "app-fridge",
+  templateUrl: "./fridge.component.html",
+  styleUrls: ["./fridge.component.css"]
 })
 export class FridgeComponent implements OnInit {
   spinner: boolean;
@@ -50,7 +55,7 @@ export class FridgeComponent implements OnInit {
     this.dataSource.sort = this.sort;
 
     if (this.paginator && this.sort) {
-      this.applyFilter('');
+      this.applyFilter("");
     }
   }
 
@@ -58,15 +63,14 @@ export class FridgeComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-/////////////////////////////////////////////////////////////////////////////////Pagination/filter/sort part
+  /////////////////////////////////////////////////////////////////////////////////Pagination/filter/sort part
 
-  showRecipes(){
-    if(this.fridge.ingredients.length == 0)
+  showRecipes() {
+    if (this.fridge.ingredients.length == 0)
       this.snackBar.open("Your fridge is empty!", "OK", {
         duration: 2000
       });
     else this.getRecipesByFridge();
-
   }
 
   selectedIngredient(ingredient: Ingredient) {
@@ -87,7 +91,7 @@ export class FridgeComponent implements OnInit {
     return true;
   }
 
-  getRecipesByFridge(){
+  getRecipesByFridge() {
     console.log(this.fridge);
     this.spinner = true;
     this.fridgeService.getRecipesByFridge(this.fridge).subscribe(response => {
@@ -100,7 +104,7 @@ export class FridgeComponent implements OnInit {
       console.log(this.fridgeRecipes);
       this.recipes = true;
       this.spinner = false;
-    })
+    });
   }
 
   getFridge() {
@@ -110,6 +114,7 @@ export class FridgeComponent implements OnInit {
         this.fridge.ingredients[i] = new Ingredient();
         this.fridge.ingredients[i] = response["ingredients"][i]["ingredient"];
       }
+      console.log(response);
       this.recipes = false;
       this.spinner = false;
     });
@@ -125,23 +130,26 @@ export class FridgeComponent implements OnInit {
 
   addIngredient(ingredientId: string) {
     this.spinner = true;
-    this.fridgeService.addIngredient(ingredientId).subscribe(response => {
-      console.log(response);
-      this.getFridge();
-      this.recipes = false;
-    }, (error) => {
-      console.log(error);
-      this.snackBar.open('Ingredient already exists in your fridge!', 'OK', {
-        duration: 2000
-      });
-      this.spinner = false;
-    });
+    this.fridgeService.addIngredient(ingredientId).subscribe(
+      response => {
+        console.log(response);
+        this.getFridge();
+        this.recipes = false;
+      },
+      error => {
+        console.log(error);
+        this.snackBar.open("Ingredient already exists in your fridge!", "OK", {
+          duration: 2000
+        });
+        this.spinner = false;
+      }
+    );
   }
 
   clearFridge() {
     this.spinner = true;
     this.fridgeService.clearFridge().subscribe(response => {
-      this.snackBar.open('Fridge successfully cleared!', 'OK', {
+      this.snackBar.open("Fridge successfully cleared!", "OK", {
         duration: 2000
       });
       this.getFridge();
