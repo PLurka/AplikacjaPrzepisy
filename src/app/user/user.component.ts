@@ -1,7 +1,5 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { UserService } from "./services/user.service";
-import { Recipe } from "../recipe/recipe";
-import { MatTableDataSource } from "@angular/material";
 import { Router, ActivatedRoute } from "@angular/router";
 import { User } from "./user";
 

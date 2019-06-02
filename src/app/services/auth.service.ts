@@ -1,25 +1,24 @@
-import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+import { Injectable } from "@angular/core";
+import { Router } from "@angular/router";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class AuthService {
-
-  constructor(private router: Router) { }
+  constructor(private router: Router) {}
 
   isAuthenticated() {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem("token");
     if (token) {
-        return true;
+      return true;
     }
 
     return false;
-}
+  }
 
-logoutUser() {
-  localStorage.removeItem('token');
-  localStorage.removeItem('user');
-  this.router.navigate(['/goodbye']);
-}
+  logoutUser() {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    this.router.navigate(["/goodbye"]);
+  }
 }

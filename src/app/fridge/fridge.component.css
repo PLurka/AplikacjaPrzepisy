@@ -1,4 +1,4 @@
-.overall{
+.overall {
   width: 50%;
   padding-left: 25%;
   padding-right: 25%;
@@ -8,13 +8,14 @@
   display: flex;
 }
 
-.mat-elevation-z8{
+.mat-elevation-z8 {
   flex: 3;
   /* max-width: 500px; */
   width: 100%;
 }
 
-th, td {
+th,
+td {
   overflow: hidden;
   width: 25%;
   text-overflow: ellipsis;
@@ -34,12 +35,12 @@ th, td {
   flex: 3;
 }
 
-.buttons{
+.buttons {
   display: flex;
   justify-content: center;
 }
 
-.spinner{
+.spinner {
   position: absolute;
   height: 100px;
   width: 100px;
@@ -50,30 +51,28 @@ th, td {
   background-size: 100%;
 }
 
-.ingredientsTitle{
+.ingredientsTitle {
   padding: 10px;
-  font-family: Roboto,"Helvetica Neue",sans-serif;
-    font-size: 18px;
-    font-weight: 500;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
 }
-.ingredientName{
-  font-family: Roboto,"Helvetica Neue",sans-serif;
-    font-size: 15px;
-    font-weight: 500;
-    padding: 5px;
+.ingredientName {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 5px;
 }
 
 .buttonDes {
-   font-size: 10px;
-  padding-left:5px;
-  padding-right:5px;
-  left: 5px; 
+  font-size: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+  left: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
-  
 }
-.button{
-  
+.button {
   flex: 1;
 }

@@ -36,10 +36,6 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(["/users"]);
   }
 
-  // navigateFridge() {
-  //   this.router.navigate(["/fridge"]);
-  // }
-
   navigateIngredients() {
     this.router.navigate(["/ingredients"]);
   }

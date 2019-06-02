@@ -29,7 +29,7 @@ export class IngredientService {
       );
   }
 
-  searchIngredients(input: string): Observable<object>{
+  searchIngredients(input: string): Observable<object> {
     return this.httpClient
       .get(
         `https://team-recipes.herokuapp.com/search/ingredients?query=${input}`,

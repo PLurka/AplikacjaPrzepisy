@@ -44,7 +44,14 @@ export class IngredientsPageComponent implements OnInit {
   }
 
   submit() {
-    if(this.ingredient.name == null || this.ingredient.name == "" || (!(String(this.ingredient.vege) == "true" || String(this.ingredient.vege) == "false"))) {
+    if (
+      this.ingredient.name == null ||
+      this.ingredient.name == "" ||
+      !(
+        String(this.ingredient.vege) == "true" ||
+        String(this.ingredient.vege) == "false"
+      )
+    ) {
       this.snackBar.open("You need to fill both fields properly!", "OK", {
         duration: 3000
       });
@@ -60,22 +67,22 @@ export class IngredientsPageComponent implements OnInit {
         duration: 3000
       });
     } else {
-    this.ingredientService
-      .getIngredient(this.inputIdIngredient)
-      .subscribe(response => {
-        console.log(response);
-        this.ingredient.id = response["id"];
-        this.ingredient.name = response["name"];
-        this.ingredient.vege = response["vege"];
-        this.takenIngredient = this.ingredient;
-        this.editButton = true;
-        this.createEdit = false;
-        this.deleteButton = true;
-      }, (error => {
-        this.snackBar.open("No ingredient for this id!", "OK", {
-          duration: 3000
-        });
-      }));
+      this.ingredientService.getIngredient(this.inputIdIngredient).subscribe(
+        response => {
+          this.ingredient.id = response["id"];
+          this.ingredient.name = response["name"];
+          this.ingredient.vege = response["vege"];
+          this.takenIngredient = this.ingredient;
+          this.editButton = true;
+          this.createEdit = false;
+          this.deleteButton = true;
+        },
+        error => {
+          this.snackBar.open("No ingredient for this id!", "OK", {
+            duration: 3000
+          });
+        }
+      );
     }
   }
 
@@ -91,7 +98,6 @@ export class IngredientsPageComponent implements OnInit {
     this.ingredientService
       .createIngredient(this.ingredient)
       .subscribe(response => {
-        console.log(response);
         this.snackBar.open("Ingredient created successfully!", "OK", {
           duration: 3000
         });
@@ -102,7 +108,6 @@ export class IngredientsPageComponent implements OnInit {
     this.ingredientService
       .putIngredient(this.ingredient)
       .subscribe(response => {
-        console.log(response);
         this.snackBar.open("Ingredient edited successfully!", "OK", {
           duration: 3000
         });
@@ -113,7 +118,6 @@ export class IngredientsPageComponent implements OnInit {
     this.ingredientService
       .deleteIngredient(this.ingredient.id)
       .subscribe(response => {
-        console.log(response);
         this.snackBar.open("Ingredient deleted successfully!", "OK", {
           duration: 3000
         });
@@ -126,19 +130,18 @@ export class IngredientsPageComponent implements OnInit {
         duration: 3000
       });
     } else {
-    this.ingredientService
-      .searchIngredients(this.inputNameIngredient)
-      .subscribe(response => {
-        if(response["results"].length == 0){
-          this.snackBar.open("No ingredients for your input!", "OK", {
-            duration: 3000
-          });
-        } else {
-          this.ingredientsList = response["results"];
-          this.list = true;
-        }
-
-      });
+      this.ingredientService
+        .searchIngredients(this.inputNameIngredient)
+        .subscribe(response => {
+          if (response["results"].length == 0) {
+            this.snackBar.open("No ingredients for your input!", "OK", {
+              duration: 3000
+            });
+          } else {
+            this.ingredientsList = response["results"];
+            this.list = true;
+          }
+        });
     }
   }
 }

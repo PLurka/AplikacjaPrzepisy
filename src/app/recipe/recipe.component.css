@@ -1,4 +1,4 @@
-.recipe{
+.recipe {
   width: 50%;
   min-height: 50%;
   margin: 4px;
@@ -11,55 +11,55 @@
   /*background-color: rgb(194,24,91)*/
 }
 
-.separator{
+.separator {
   height: 5%;
 }
 
-.image{
-  max-width:100%;
-  min-width:100%;
-  width:auto;
-  height:auto;
+.image {
+  max-width: 100%;
+  min-width: 100%;
+  width: auto;
+  height: auto;
   padding-top: 1%;
 }
 
-.inside{
+.inside {
   display: flex;
 }
 
-.ingredients{
-  flex: 1
+.ingredients {
+  flex: 1;
 }
 
-.cardDescription{
+.cardDescription {
   /*position: absolute;
   bottom: 50px;*/
   min-width: -20px;
   min-height: 200px;
-  
+
   flex: 1;
 }
 
-.container{
+.container {
   display: flex;
 }
 
-.get{
+.get {
   flex: 1;
   display: flex;
   justify-content: center;
   text-align: center;
 }
 
-.author{
+.author {
   text-align: right;
 }
 
-.buttons{
+.buttons {
   display: flex;
 }
 
-.spinner{
+.spinner {
   position: absolute;
   height: 100px;
   width: 100px;

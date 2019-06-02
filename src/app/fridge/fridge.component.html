@@ -1,20 +1,23 @@
 <app-navbar></app-navbar>
 <mat-spinner *ngIf="spinner == true" class="spinner"></mat-spinner>
 <div *ngIf="spinner == false" class="overall">
-
   <div class="container">
-
     <mat-card class="fridge">
-      <mat-list role="list" >
+      <mat-list role="list">
         <div class="ingredientsTitle">My fridge:</div>
-        <mat-list-item role="listitem" class="listItem" *ngFor="let ingredient of fridge.ingredients">
+        <mat-list-item
+          role="listitem"
+          class="listItem"
+          *ngFor="let ingredient of fridge.ingredients"
+        >
           <h3 class="ingredientName">{{ ingredient["name"] }}</h3>
           <button
             mat-mini-fab
             color="primary"
             class="buttonDes"
             (click)="deleteIngredient(ingredient.id)"
-          > -
+          >
+            -
           </button>
         </mat-list-item>
       </mat-list>
@@ -25,25 +28,33 @@
         (eventIngredient)="selectedIngredient($event)"
       ></app-ingredient>
     </mat-card>
-
   </div>
 
   <div class="buttons">
-    <button mat-flat-button color="primary" class="button" (click)="clearFridge()">
+    <button
+      mat-flat-button
+      color="primary"
+      class="button"
+      (click)="clearFridge()"
+    >
       Clear Fridge
     </button>
     <div></div>
-    <button mat-flat-button color="primary" class="button" (click)="showRecipes()">
+    <button
+      mat-flat-button
+      color="primary"
+      class="button"
+      (click)="showRecipes()"
+    >
       Search for recipes
     </button>
   </div>
-
 </div>
 
 <div *ngIf="spinner == false && recipes == true" class="array">
   <!--<mat-form-field>
     <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter"
-        matInput 
+        matInput
         [(ngModel)]="input"
     >
   </mat-form-field>
@@ -91,6 +102,9 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
-  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
-</div>
 
+  <mat-paginator
+    [pageSizeOptions]="[5, 10, 20]"
+    showFirstLastButtons
+  ></mat-paginator>
+</div>

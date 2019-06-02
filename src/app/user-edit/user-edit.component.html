@@ -10,22 +10,27 @@
           <mat-radio-group
             aria-labelledby="example-radio-group-label"
             class="example-radio-group"
-            [(ngModel)]="pickedAnswer">
-            <mat-radio-button class="example-radio-button" *ngFor="let option of options" [value]="option">
-              {{option}}
+            [(ngModel)]="pickedAnswer"
+          >
+            <mat-radio-button
+              class="example-radio-button"
+              *ngFor="let option of options"
+              [value]="option"
+            >
+              {{ option }}
             </mat-radio-button>
           </mat-radio-group>
         </div>
 
-          <button
-            mat-raised-button
-            color="primary"
-            type="submit"
-            style="margin: 10px auto; width: fit-content;"
-            (click)="onEditDietSubmit()"
-          >
-            Edit diet
-          </button>
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          style="margin: 10px auto; width: fit-content;"
+          (click)="onEditDietSubmit()"
+        >
+          Edit diet
+        </button>
       </mat-card-content>
     </mat-card>
   </div>
@@ -40,32 +45,32 @@
           [formGroup]="editPasswordForm"
           (ngSubmit)="onEditPasswordSubmit()"
         >
-        <mat-form-field>
-          <input
-            matInput
-            formControlName="password"
-            placeholder="Enter new password"
-            type="text"
-          />
-        </mat-form-field>
-        <mat-form-field>
-          <input
-            matInput
-            formControlName="confirmPassword"
-            placeholder="Confirm new password"
-            type="text"
-          />
-        </mat-form-field>
-        <button
-          mat-raised-button
-          color="primary"
-          type="submit"
-          style="margin: 10px auto; width: fit-content;"
-          [disabled]="editPasswordForm.invalid"
-        >
-          Set new password
-        </button>
-      </form>
+          <mat-form-field>
+            <input
+              matInput
+              formControlName="password"
+              placeholder="Enter new password"
+              type="text"
+            />
+          </mat-form-field>
+          <mat-form-field>
+            <input
+              matInput
+              formControlName="confirmPassword"
+              placeholder="Confirm new password"
+              type="text"
+            />
+          </mat-form-field>
+          <button
+            mat-raised-button
+            color="primary"
+            type="submit"
+            style="margin: 10px auto; width: fit-content;"
+            [disabled]="editPasswordForm.invalid"
+          >
+            Set new password
+          </button>
+        </form>
       </mat-card-content>
     </mat-card>
   </div>
@@ -80,24 +85,24 @@
           [formGroup]="editEmailForm"
           (ngSubmit)="onEditEmailSubmit()"
         >
-        <mat-form-field>
-          <input
-            matInput
-            formControlName="email"
-            placeholder="Set your email"
-            type="text"
-          />
-        </mat-form-field>
-        <button
-          mat-raised-button
-          color="primary"
-          type="submit"
-          style="margin: 10px auto; width: fit-content;"
-          [disabled]="editEmailForm.invalid"
-        >
-          Set your email
-        </button>
-      </form>
+          <mat-form-field>
+            <input
+              matInput
+              formControlName="email"
+              placeholder="Set your email"
+              type="text"
+            />
+          </mat-form-field>
+          <button
+            mat-raised-button
+            color="primary"
+            type="submit"
+            style="margin: 10px auto; width: fit-content;"
+            [disabled]="editEmailForm.invalid"
+          >
+            Set your email
+          </button>
+        </form>
       </mat-card-content>
     </mat-card>
   </div>

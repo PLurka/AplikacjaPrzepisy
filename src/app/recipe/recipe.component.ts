@@ -6,7 +6,6 @@ import { RecipeService } from "./services/recipe.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { MatSnackBar, MatDialog } from "@angular/material";
 import { ConfirmationDialogComponent } from "../confirmation-dialog/confirmation-dialog.component";
-import { UseExistingWebDriver } from "protractor/built/driverProviders";
 import { User } from "../user/user";
 
 @Component({
@@ -32,7 +31,6 @@ export class RecipeComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       this.getRecipe(params["id"]);
       this.spinner = true;
-      console.log(JSON.parse(localStorage.getItem("user"))["id"]);
     });
   }
 
@@ -49,7 +47,6 @@ export class RecipeComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        console.log("Yes clicked");
         this.deleteRecipe(this.recipeCard.id);
       }
     });
@@ -74,10 +71,8 @@ export class RecipeComponent implements OnInit {
 
   deleteRecipe(recipeId: string) {
     this.spinner = true;
-    console.log(recipeId);
     this.recipeService.deleteRecipe(recipeId).subscribe(
       response => {
-        console.log(response);
         this.recipeCard = new Recipe();
         this.snackBar.open("Recipe deleted successfully!", "OK", {
           duration: 3000

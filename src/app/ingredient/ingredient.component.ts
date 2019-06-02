@@ -23,7 +23,6 @@ export class IngredientComponent implements OnInit {
   ngOnInit() {}
 
   addIngredient(ingredient: Ingredient) {
-    console.log(ingredient);
     this.eventIngredient.emit(ingredient);
   }
 
@@ -34,9 +33,7 @@ export class IngredientComponent implements OnInit {
       });
     } else {
       this.ingredientService.searchIngredients(input).subscribe(res => {
-        console.log(res);
         this.ingredients = res["results"];
-        console.log(this.ingredients);
       });
     }
   }

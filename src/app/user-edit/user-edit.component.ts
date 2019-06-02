@@ -55,7 +55,6 @@ export class UserEditComponent implements OnInit {
           });
         },
         (error: HttpErrorResponse) => {
-          console.log(error);
           this.snackBar.open(error.error.message, "OK", {
             duration: 3000
           });
@@ -84,7 +83,6 @@ export class UserEditComponent implements OnInit {
 
   onEditEmailSubmit() {
     const email = this.editEmailForm.value;
-    console.log(email);
     this.userEditService
       .putEmail(email)
       .pipe(first())

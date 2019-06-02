@@ -28,16 +28,16 @@
   width: 100%;
 }
 
-.container{
+.container {
   display: flex;
 }
 
-.vegeBackground{
+.vegeBackground {
   display: flex;
   flex-direction: column;
 }
 
-.example-radio-group{
+.example-radio-group {
   text-align: center;
   display: flex;
   width: 50%;
@@ -46,7 +46,7 @@
   padding-right: 25%;
 }
 
-.radioGroup{
+.radioGroup {
   display: flex;
   text-align: center;
 }

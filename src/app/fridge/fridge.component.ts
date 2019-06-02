@@ -92,16 +92,13 @@ export class FridgeComponent implements OnInit {
   }
 
   getRecipesByFridge() {
-    console.log(this.fridge);
     this.spinner = true;
     this.fridgeService.getRecipesByFridge(this.fridge).subscribe(response => {
-      console.log(response);
       this.fridgeRecipes = new Array<Recipe>();
       for (const recipe of response["recipes"]) {
         this.fridgeRecipes.push(recipe);
       }
       this.dataSource = new MatTableDataSource(this.fridgeRecipes);
-      console.log(this.fridgeRecipes);
       this.recipes = true;
       this.spinner = false;
     });
@@ -114,7 +111,6 @@ export class FridgeComponent implements OnInit {
         this.fridge.ingredients[i] = new Ingredient();
         this.fridge.ingredients[i] = response["ingredients"][i]["ingredient"];
       }
-      console.log(response);
       this.recipes = false;
       this.spinner = false;
     });
@@ -123,7 +119,6 @@ export class FridgeComponent implements OnInit {
   deleteIngredient(ingredientId: string) {
     this.spinner = true;
     this.fridgeService.deleteIngredient(ingredientId).subscribe(response => {
-      console.log(response);
       this.getFridge();
     });
   }
@@ -132,12 +127,10 @@ export class FridgeComponent implements OnInit {
     this.spinner = true;
     this.fridgeService.addIngredient(ingredientId).subscribe(
       response => {
-        console.log(response);
         this.getFridge();
         this.recipes = false;
       },
       error => {
-        console.log(error);
         this.snackBar.open("Ingredient already exists in your fridge!", "OK", {
           duration: 2000
         });

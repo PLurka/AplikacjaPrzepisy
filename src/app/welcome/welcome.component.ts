@@ -1,26 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 
 @Component({
-  selector: 'app-welcome',
-  templateUrl: './welcome.component.html',
-  styleUrls: ['./welcome.component.css']
+  selector: "app-welcome",
+  templateUrl: "./welcome.component.html",
+  styleUrls: ["./welcome.component.css"]
 })
 export class WelcomeComponent implements OnInit {
+  constructor(private router: Router) {}
 
-  constructor(
-    private router: Router
-  ) { }
-
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   login() {
-    this.router.navigate(['/login'], { queryParams: {} });
+    this.router.navigate(["/login"], { queryParams: {} });
   }
 
-  register(){
-    this.router.navigate(['/register'], { queryParams: {} });
+  register() {
+    this.router.navigate(["/register"], { queryParams: {} });
   }
-
 }

@@ -5,5 +5,4 @@ export class User {
   username: string;
   vege: boolean;
   recipes? = new Array<Recipe>();
-  // fridge?: Fridge;//do zrobienia Fridge
 }

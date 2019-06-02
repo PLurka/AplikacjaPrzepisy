@@ -6,9 +6,9 @@ import { Router } from "@angular/router";
 import { UserService } from "../user/services/user.service";
 
 @Component({
-  selector: 'app-recipe-tab',
-  templateUrl: './recipe-tab.component.html',
-  styleUrls: ['./recipe-tab.component.css']
+  selector: "app-recipe-tab",
+  templateUrl: "./recipe-tab.component.html",
+  styleUrls: ["./recipe-tab.component.css"]
 })
 export class RecipeTabComponent implements OnInit {
   input: string;
@@ -20,7 +20,7 @@ export class RecipeTabComponent implements OnInit {
   recipeCard: Recipe = new Recipe();
   dataSource;
   typeTab: number;
-  displayedColumns: string[] = ['title', 'vege', 'author', 'show'];
+  displayedColumns: string[] = ["title", "vege", "author", "show"];
   constructor(
     private recipeService: RecipeService,
     private userService: UserService,
@@ -32,12 +32,8 @@ export class RecipeTabComponent implements OnInit {
     this.spinner = true;
     this.actualPage = 0;
     this.actualLimit = 10;
-    this.actualSort = 'Title';
-    console.log(this.userId);
-    if (this.userId == 0) {
-      this.getRecipes();
-      console.log(this.userId);
-    }
+    this.actualSort = "Title";
+    if (this.userId == 0) this.getRecipes();
     else this.getUserRecipes(this.userId);
   }
 
@@ -48,14 +44,12 @@ export class RecipeTabComponent implements OnInit {
     if (this.actualPage > 0) {
       this.actualPage -= 1;
     }
-    if(this.typeTab == 1)
-      this.getRecipes();
+    if (this.typeTab == 1) this.getRecipes();
   }
 
   nextPage() {
     this.actualPage += 1;
-    if(this.typeTab == 1)
-      this.getRecipes();
+    if (this.typeTab == 1) this.getRecipes();
   }
 
   allRecipes() {
@@ -67,13 +61,11 @@ export class RecipeTabComponent implements OnInit {
     this.recipeService
       .getRecipes(this.actualPage, this.actualLimit, this.actualSort)
       .subscribe(res => {
-        console.log(res);
         this.recipes = new Array<Recipe>();
-        for (const recipe of res['recipes']) {
+        for (const recipe of res["recipes"]) {
           this.recipes.push(recipe);
         }
         this.dataSource = new MatTableDataSource(this.recipes);
-        console.log(this.recipes);
         this.spinner = false;
         this.typeTab = 1;
       });
@@ -93,8 +85,8 @@ export class RecipeTabComponent implements OnInit {
   }
 
   searchRecipes(input: string) {
-    if(input == null) {
-      this.snackBar.open('You need to enter something!', 'OK', {
+    if (input == null) {
+      this.snackBar.open("You need to enter something!", "OK", {
         duration: 3000
       });
     } else {
@@ -107,19 +99,19 @@ export class RecipeTabComponent implements OnInit {
         }
         this.spinner = false;
         this.typeTab = 2;
-    })
+      });
     }
   }
 
   navigateRecipe(recipeId: string) {
-    this.router.navigate(['/recipe'], { queryParams: { id: recipeId } });
+    this.router.navigate(["/recipe"], { queryParams: { id: recipeId } });
   }
 
   navigateProfile(userId: string) {
-    if (JSON.parse(localStorage.getItem('user'))['id'] === userId) {
-      this.router.navigate(['/']);
+    if (JSON.parse(localStorage.getItem("user"))["id"] === userId) {
+      this.router.navigate(["/"]);
     } else {
-      this.router.navigate(['/user'], {
+      this.router.navigate(["/user"], {
         queryParams: {
           userId: userId
         }

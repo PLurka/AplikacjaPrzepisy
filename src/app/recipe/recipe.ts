@@ -1,4 +1,5 @@
 import { Ingredient } from "../ingredient/ingredient";
+import { User } from "../user/user";
 
 export class Recipe {
   id?: string;
@@ -6,5 +7,5 @@ export class Recipe {
   vege: boolean;
   description: string;
   ingredients = new Array<Ingredient>();
-  user?: object;
+  user?: User;
 }
