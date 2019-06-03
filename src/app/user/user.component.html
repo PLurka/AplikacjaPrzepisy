@@ -4,9 +4,11 @@
   <div class="userProfile">
     <mat-card>
       <mat-card>
-        <div>{{ user.username }}</div>
-        <div *ngIf="user.vege == true">Vegeterian - Yes</div>
-        <div *ngIf="user.vege == false">Vegeterian - No</div>
+        <div class="username">Username - {{ user.username }}</div>
+        <div class="uservege">
+          <div *ngIf="user.vege == true">Vegeterian - Yes</div>
+          <div *ngIf="user.vege == false">Vegeterian - No</div>
+        </div>
       </mat-card>
 
       <div class="buttons">

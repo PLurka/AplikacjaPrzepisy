@@ -21,6 +21,14 @@ table {
   flex: 1;
 }
 
+.username {
+  text-align: center;
+}
+
+.uservege{
+  text-align: center;
+}
+
 .userRecipes {
   flex: 2;
 }

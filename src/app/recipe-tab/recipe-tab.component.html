@@ -115,13 +115,13 @@
     </div>
   </div>
   <div
-    *ngIf="spinner == false && recipes.length == 0 && typeTab == 2"
+    *ngIf="spinner == false && recipes.length == 0 && (userId == 0 || userId == -1)"
     class="notAdded"
   >
     NO RECIPES AVAILABLE
   </div>
   <div
-    *ngIf="spinner == false && recipes.length == 0 && typeTab == 0"
+    *ngIf="spinner == false && recipes.length == 0 && userId > 0"
     class="notAdded"
   >
     NO RECIPES ADDED
