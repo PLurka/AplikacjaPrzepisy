@@ -1,6 +1,6 @@
 <mat-spinner *ngIf="spinner == true" class="spinner"></mat-spinner>
 <div *ngIf="spinner == false">
-  <form class="example-form" *ngIf="typeTab == 1">
+  <form class="example-form" *ngIf="userId == -1 || userId == 0">
     <mat-form-field class="example-full-width" style="padding:5px">
       <input
         matInput
@@ -12,7 +12,7 @@
     <button
       mat-flat-button
       color="primary"
-      (click)="searchRecipes(input)"
+      (click)="search()"
       style="font-size: 10px"
     >
       Search
@@ -71,7 +71,7 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
     </table>
 
-    <div *ngIf="typeTab == 1">
+    <div>
       <button *ngIf="actualPage == 0" mat-flat-button color="primary" disabled>
         Previous Page
       </button>
@@ -83,23 +83,31 @@
       >
         Previous Page
       </button>
-      <button mat-flat-button color="primary" (click)="nextPage()">
+      <button *ngIf="lastPage == true" mat-flat-button color="primary" disabled>
+        Next Page
+      </button>
+      <button
+        *ngIf="lastPage == false"
+        mat-flat-button
+        color="primary"
+        (click)="nextPage()"
+      >
         Next Page
       </button>
       <mat-form-field class="choose">
         <mat-label>Limit on page</mat-label>
         <mat-select [(value)]="actualLimit" placeholder="None">
-          <mat-option value="10" (click)="getRecipes()">10</mat-option>
-          <mat-option value="20" (click)="getRecipes()">20</mat-option>
-          <mat-option value="50" (click)="getRecipes()">50</mat-option>
+          <mat-option value="10" (click)="refresh()">10</mat-option>
+          <mat-option value="20" (click)="refresh()">20</mat-option>
+          <mat-option value="50" (click)="refresh()">50</mat-option>
         </mat-select>
       </mat-form-field>
-      <mat-form-field class="choose">
+      <mat-form-field *ngIf="userId == 0" class="choose">
         <mat-label>Sort by</mat-label>
         <mat-select [(value)]="actualSort" placeholder="None">
-          <mat-option value="Title" (click)="getRecipes()">Title</mat-option>
-          <mat-option value="Vege" (click)="getRecipes()">Vege</mat-option>
-          <mat-option value="Ingredients" (click)="getRecipes()"
+          <mat-option value="Title" (click)="refresh()">Title</mat-option>
+          <mat-option value="Vege" (click)="refresh()">Vege</mat-option>
+          <mat-option value="Ingredients" (click)="refresh()">
             >Ingredients</mat-option
           >
         </mat-select>

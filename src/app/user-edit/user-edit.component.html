@@ -1,27 +1,13 @@
 <app-navbar></app-navbar>
-<div class="container">
+<mat-spinner *ngIf="spinner == true" class="spinner"></mat-spinner>
+<div *ngIf="spinner == false" class="container">
   <div class="vegeContainer">
     <mat-toolbar color="primary">
       <span>Are you vege?</span>
     </mat-toolbar>
     <mat-card class="example-card">
       <mat-card-content class="vegeBackground">
-        <div class="radioGroup">
-          <mat-radio-group
-            aria-labelledby="example-radio-group-label"
-            class="example-radio-group"
-            [(ngModel)]="pickedAnswer"
-          >
-            <mat-radio-button
-              class="example-radio-button"
-              *ngFor="let option of options"
-              [value]="option"
-            >
-              {{ option }}
-            </mat-radio-button>
-          </mat-radio-group>
-        </div>
-
+        <div class="vege">{{vege}}</div>
         <button
           mat-raised-button
           color="primary"
@@ -29,7 +15,7 @@
           style="margin: 10px auto; width: fit-content;"
           (click)="onEditDietSubmit()"
         >
-          Edit diet
+          Change diet
         </button>
       </mat-card-content>
     </mat-card>

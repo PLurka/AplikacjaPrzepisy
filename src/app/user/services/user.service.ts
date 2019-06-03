@@ -42,10 +42,10 @@ export class UserService {
       );
   }
 
-  getUserRecipes(userId: number): Observable<object> {
+  getUserRecipes(userId: number, page: number, limit: number): Observable<object> {
     return this.httpClient
       .get(
-        `https://team-recipes.herokuapp.com/users/${userId}/recipes`,
+        `https://team-recipes.herokuapp.com/users/${userId}/recipes?page=${page}&limit=${limit}`,
         this.httpOptions
       )
       .pipe(
