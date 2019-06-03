@@ -1,15 +1,16 @@
-.mat-elevation-z8{
+.mat-elevation-z8 {
   width: 100%;
 }
 
-th, td {
+th,
+td {
   overflow: hidden;
   width: 25%;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-.spinner{
+.spinner {
   position: absolute;
   height: 100px;
   width: 100px;

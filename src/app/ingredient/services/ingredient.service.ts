@@ -29,7 +29,7 @@ export class IngredientService {
       );
   }
 
-  searchIngredients(input: string): Observable<object>{
+  searchIngredients(input: string): Observable<object> {
     return this.httpClient
       .get(
         `https://team-recipes.herokuapp.com/search/ingredients?query=${input}`,
@@ -57,9 +57,9 @@ export class IngredientService {
     );
   }
 
-  putIngredient(ingredientId: string, ingredient: Ingredient): Observable<object> {
+  putIngredient(ingredient: Ingredient): Observable<object> {
     return this.httpClient.put(
-      `https://team-recipes.herokuapp.com/ingredients/${ingredientId}`,
+      `https://team-recipes.herokuapp.com/ingredients/${ingredient.id}`,
       JSON.stringify(ingredient),
       this.httpOptions
     );

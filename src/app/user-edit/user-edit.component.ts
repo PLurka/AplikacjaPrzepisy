@@ -1,3 +1,4 @@
+import { UserService } from "./../user/services/user.service";
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { MustMatch } from "../helpers/MustMatch";
@@ -13,15 +14,15 @@ import { UserEditService } from "./services.ts/user-edit.service";
 })
 export class UserEditComponent implements OnInit {
   diet: Diet;
-  vege: boolean;
-  options: string[] = ["Yes", "No"];
-  pickedAnswer: string;
+  vege: string;
+  spinner: boolean;
 
   editPasswordForm: FormGroup;
   editEmailForm: FormGroup;
   constructor(
     private formBuilder: FormBuilder,
     private userEditService: UserEditService,
+    private userService: UserService,
     private snackBar: MatSnackBar
   ) {}
 
@@ -39,11 +40,23 @@ export class UserEditComponent implements OnInit {
     this.editEmailForm = this.formBuilder.group({
       email: ["", [Validators.required, Validators.email]]
     });
+    this.spinner = true;
+    this.getUser();
+  }
+
+  getUser() {
+    this.userService
+      .getUser(JSON.parse(localStorage.getItem("user"))["id"])
+      .subscribe(response => {
+        if (response["vege"] == true) this.vege = "Yes";
+        else this.vege = "No";
+        this.spinner = false;
+      });
   }
 
   onEditDietSubmit() {
     this.diet = new Diet();
-    if (this.pickedAnswer == "Yes") this.diet.diet = true;
+    if (this.vege == "Yes") this.diet.diet = true;
     else this.diet.diet = false;
     this.userEditService
       .putDiet(this.diet)
@@ -53,9 +66,9 @@ export class UserEditComponent implements OnInit {
           this.snackBar.open("Successfully changed your diet!", "OK", {
             duration: 3000
           });
+          this.getUser();
         },
         (error: HttpErrorResponse) => {
-          console.log(error);
           this.snackBar.open(error.error.message, "OK", {
             duration: 3000
           });
@@ -84,7 +97,6 @@ export class UserEditComponent implements OnInit {
 
   onEditEmailSubmit() {
     const email = this.editEmailForm.value;
-    console.log(email);
     this.userEditService
       .putEmail(email)
       .pipe(first())

@@ -1,4 +1,4 @@
-.spinner{
+.spinner {
   position: absolute;
   height: 100px;
   width: 100px;
@@ -9,7 +9,7 @@
   background-size: 100%;
 }
 
-.container{
+.container {
   display: flex;
 }
 
@@ -17,10 +17,41 @@ table {
   width: 100%;
 }
 
-.userProfile{
+.userProfile {
   flex: 1;
 }
 
-.userRecipes{
+.username {
+  text-align: center;
+}
+
+.uservege{
+  text-align: center;
+}
+
+.userRecipes {
   flex: 2;
+}
+
+.buttons {
+  display: flex;
+}
+
+.editButton {
+  min-width: fit-content;
+  flex: 1;
+}
+
+.fridgeButton {
+  min-width: fit-content;
+  flex: 1;
+}
+
+.link {
+  color: white;
+  text-decoration: none;
+}
+
+.separator {
+  flex: 1;
 }

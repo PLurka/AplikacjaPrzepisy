@@ -9,10 +9,17 @@ import { Router } from "@angular/router";
 })
 export class NavbarComponent implements OnInit {
   isLogged: boolean;
+  admin: boolean;
   constructor(private router: Router, private authService: AuthService) {}
 
   ngOnInit() {
     this.isLogged = this.authService.isAuthenticated();
+    this.validateAdmin();
+  }
+
+  validateAdmin() {
+    if (JSON.parse(localStorage.getItem("user"))["id"] == 1) this.admin = true;
+    else this.admin = false;
   }
 
   navigateRecipes() {
@@ -29,7 +36,7 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(["/users"]);
   }
 
-  navigateFridge() {
-    this.router.navigate(["/fridge"])
+  navigateIngredients() {
+    this.router.navigate(["/ingredients"]);
   }
 }

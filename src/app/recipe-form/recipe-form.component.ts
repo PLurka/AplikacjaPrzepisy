@@ -4,6 +4,7 @@ import { Recipe } from "../recipe/recipe";
 import { RecipeService } from "../recipe/services/recipe.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { MatSnackBar } from "@angular/material";
+import { User } from "../user/user";
 
 @Component({
   selector: "app-recipe-form",
@@ -42,7 +43,7 @@ export class RecipeFormComponent implements OnInit {
   validateIngredient(ingredientId: string): boolean {
     for (let i = 0; i < this.recipe.ingredients.length; i++) {
       if (this.recipe.ingredients[i].id == ingredientId) {
-        this.snackBar.open('Ingredient already exists!', 'OK', {
+        this.snackBar.open("Ingredient already exists!", "OK", {
           duration: 2000
         });
         return false;
@@ -75,43 +76,65 @@ export class RecipeFormComponent implements OnInit {
         this.recipe.ingredients[i] = new Ingredient();
         this.recipe.ingredients[i] = res["ingredients"][i]["ingredient"];
       }
+      this.recipe.user = new User();
+      this.recipe.user = res["user"];
       this.spinner = false;
     });
   }
 
   createRecipe(): void {
-    this.spinner = true;
-    this.recipe.vege = this.checkVege();
-    console.log(this.recipe);
-    this.recipeService.createRecipe(this.recipe).subscribe(
-      response => {
+    if (
+      this.recipe.title == "" ||
+      this.recipe.description == "" ||
+      this.recipe.title == null ||
+      this.recipe.description == null
+    ) {
+      this.snackBar.open(
+        "You need to fill title and description fields!",
+        "OK",
+        {
+          duration: 3000
+        }
+      );
+    } else {
+      this.spinner = true;
+      this.recipe.vege = this.checkVege();
+      this.recipeService.createRecipe(this.recipe).subscribe(response => {
         this.recipe = new Recipe();
-        this.snackBar.open('Recipe created successfully!', 'OK', {
+        this.snackBar.open("Recipe created successfully!", "OK", {
           duration: 3000
         });
         this.router.navigate(["/"]);
-      },
-      error => {
-        console.log(error);
-      }
-    );
+      });
+    }
   }
 
   putRecipe(recipeId: string) {
-    this.spinner = true;
-    this.recipe.user = {
-      //do zmiany po ogarnięciu usera
-      id: 1,
-      username: "admin",
-      vege: false
-    };
-    this.recipe.vege = this.checkVege();
-    this.recipeService.putRecipe(recipeId, this.recipe).subscribe(response => {
-      this.recipe = new Recipe();
-      this.snackBar.open('Recipe updated successfully!', 'OK', {
-        duration: 3000
-      });
-      this.router.navigate(["/recipe"], { queryParams: { id: recipeId } });
-    });
+    if (
+      this.recipe.title == "" ||
+      this.recipe.description == "" ||
+      this.recipe.title == null ||
+      this.recipe.description == null
+    ) {
+      this.snackBar.open(
+        "You need to fill title and description fields!",
+        "OK",
+        {
+          duration: 3000
+        }
+      );
+    } else {
+      this.spinner = true;
+      this.recipe.vege = this.checkVege();
+      this.recipeService
+        .putRecipe(recipeId, this.recipe)
+        .subscribe(response => {
+          this.recipe = new Recipe();
+          this.snackBar.open("Recipe updated successfully!", "OK", {
+            duration: 3000
+          });
+          this.router.navigate(["/recipe"], { queryParams: { id: recipeId } });
+        });
+    }
   }
 }

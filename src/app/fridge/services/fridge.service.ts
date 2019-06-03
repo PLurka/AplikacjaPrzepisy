@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
+import { Fridge } from "../fridge";
 
 @Injectable({
   providedIn: "root"
@@ -15,6 +16,14 @@ export class FridgeService {
       Authorization: "Bearer " + localStorage.getItem("token")
     })
   };
+
+  getRecipesByFridge(fridge: Fridge) {
+    return this.httpClient.post(
+      "https://team-recipes.herokuapp.com/search/recipes",
+      JSON.stringify(fridge),
+      this.httpOptions
+    );
+  }
 
   getFridge(): Observable<object> {
     return this.httpClient

@@ -1,56 +1,65 @@
-.recipe{
-  max-width: 300px;
-  min-height: 360px;
+.recipe {
+  width: 50%;
+  min-height: 50%;
   margin: 4px;
-  vertical-align: center;
+  display: flex;
+  flex-direction: column;
   text-align: center;
-
 }
 
 .recipeTitle {
-  background-color: rgb(194,24,91)
-}
-.cardDescription{
-  position: absolute;
-  bottom: 50px;
-  min-width: -20px;
-  min-height: 200px;
-  max-width: 270px;
+  /*background-color: rgb(194,24,91)*/
 }
 
-.container{
+.separator {
+  height: 5%;
+}
+
+.image {
+  max-width: 100%;
+  min-width: 100%;
+  width: auto;
+  height: auto;
+  padding-top: 1%;
+}
+
+.inside {
   display: flex;
 }
 
-.get{
+.ingredients {
   flex: 1;
 }
 
-.post{
-  flex: 2;
+.cardDescription {
+  /*position: absolute;
+  bottom: 50px;*/
+  min-width: -20px;
+  min-height: 200px;
+
+  flex: 1;
 }
 
-table {
-  width: 100%;
+.container {
+  display: flex;
 }
 
-.inputDescription{
-  min-height: 100px;
+.get {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  text-align: center;
 }
 
-.deleteButton{
-  position: absolute;
-  bottom: 4px;
-  left: 20px;
+.author {
+  text-align: right;
 }
 
-.editButton{
-  position: absolute;
-  bottom: 4px;
-  right: 20px;
+.buttons {
+  display: flex;
 }
 
-.spinner{
+.spinner {
   position: absolute;
   height: 100px;
   width: 100px;

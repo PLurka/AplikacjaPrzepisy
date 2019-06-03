@@ -1,4 +1,4 @@
-.spinner{
+.spinner {
   position: absolute;
   height: 100px;
   width: 100px;
@@ -9,72 +9,72 @@
   background-size: 100%;
 }
 
-.ingredient{
+.ingredient {
   position: absolute;
   width: 100px;
   left: 50%;
   background-size: 100%;
 }
 
-.form{
+.form {
   display: flex;
   flex-direction: column;
 }
 
-.titleContainer{
+.titleContainer {
   flex: 1;
 }
 
-.description{
+.description {
   flex: 20;
 }
 
-.inputDescription{
+.inputDescription {
   resize: vertical;
   min-height: 300px;
   height: fit-content;
 }
 
-.container{
+.container {
   display: flex;
 }
 
-.post{
+.post {
   display: flex;
   flex-direction: column;
   flex: 70;
 }
 
-.ingredientsOuter{
+.ingredientsOuter {
   flex: 40;
 }
 
-.ingredients{
+.ingredients {
   display: flex;
 }
 
-.ingredientsTitle{
+.ingredientsTitle {
   text-align: center;
   font-size: 25px;
 }
 
-.list{
+.list {
   flex: 10;
 }
 
-.button{
+.button {
   flex: 2;
 }
 
-.separator{
+.separator {
   flex: 2;
 }
 
-.ingredientName{
+.ingredientName {
   flex: 2;
   text-align: center;
 }
 
-.ingredientSearch{
+.ingredientSearch {
   flex: 30;
 }

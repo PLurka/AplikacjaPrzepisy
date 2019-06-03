@@ -1,7 +1,5 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { UserService } from "./services/user.service";
-import { Recipe } from "../recipe/recipe";
-import { MatTableDataSource } from "@angular/material";
 import { Router, ActivatedRoute } from "@angular/router";
 import { User } from "./user";
 
@@ -34,13 +32,11 @@ export class UserComponent implements OnInit {
     });
   }
 
-  checkUser(){
+  checkUser() {
     console.log(this.userId);
     const logged = JSON.parse(localStorage.getItem("user"))["id"];
-    if(logged == this.userId || logged == 1)
-      return true;
-    else
-      return false;
+    if (logged == this.userId || logged == 1) return true;
+    else return false;
   }
 
   validateUser(): boolean {
@@ -60,6 +56,10 @@ export class UserComponent implements OnInit {
 
   editProfile() {
     this.router.navigate(["/edituser"]);
+  }
+
+  goToFridge() {
+    this.router.navigate(["/fridge"]);
   }
 
   navigateRecipe(recipeId: string) {

@@ -53,26 +53,27 @@
     </form>
   </div>
 
-
-
   <div class="ingredientsOuter" *ngIf="spinner == false">
-    <div class="ingredientsTitle"> INGREDIENTS </div>
+    <div class="ingredientsTitle">INGREDIENTS</div>
     <div class="ingredients">
       <mat-list role="list" class="list">
-        <div class="ingredientsTitle" *ngIf="spinner == false"> Added: </div>
-          <mat-list-item role="listitem" *ngFor="let ingredient of recipe.ingredients">
-            <h3 class="ingredientName">{{ ingredient["name"] }}</h3>
-            <div class="separator"></div>
-            <button
-              mat-flat-button
-              color="primary"
-              class="button"
-              (click)="deleteIngredient(ingredient)"
-            >
-              -
-            </button>
-          </mat-list-item>
-        </mat-list>
+        <div class="ingredientsTitle" *ngIf="spinner == false">Added:</div>
+        <mat-list-item
+          role="listitem"
+          *ngFor="let ingredient of recipe.ingredients"
+        >
+          <h3 class="ingredientName">{{ ingredient["name"] }}</h3>
+          <div class="separator"></div>
+          <button
+            mat-flat-button
+            color="primary"
+            class="button"
+            (click)="deleteIngredient(ingredient)"
+          >
+            -
+          </button>
+        </mat-list-item>
+      </mat-list>
 
       <div class="ingredientSearch" *ngIf="spinner == false">
         <app-ingredient

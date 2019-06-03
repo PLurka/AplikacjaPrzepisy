@@ -4,20 +4,37 @@
   <div class="userProfile">
     <mat-card>
       <mat-card>
-        <div>{{ user.username }}</div>
-        <div *ngIf="user.vege == true">Vegeterian - Yes</div>
-        <div *ngIf="user.vege == false">Vegeterian - No</div>
+        <div class="username">Username - {{ user.username }}</div>
+        <div class="uservege">
+          <div *ngIf="user.vege == true">Vegeterian - Yes</div>
+          <div *ngIf="user.vege == false">Vegeterian - No</div>
+        </div>
       </mat-card>
-      <button
-        *ngIf="checkUser() == true"
-        mat-flat-button
-        color="primary"
-        (click)="editProfile()"
-        class="editButton"
-      >
-        Edit profile
-      </button>
+
+      <div class="buttons">
+        <div class="separator"></div>
+        <button
+          *ngIf="checkUser() == true"
+          mat-flat-button
+          color="primary"
+          (click)="editProfile()"
+          class="editButton"
+        >
+          Edit profile
+        </button>
+        <div class="separator"></div>
+        <button
+          *ngIf="checkUser() == true"
+          mat-flat-button
+          color="primary"
+          class="fridgeButton"
+        >
+          <a href="/fridge" class="link">My Fridge</a>
+        </button>
+        <div class="separator"></div>
+      </div>
     </mat-card>
   </div>
+
   <app-recipe-tab class="userRecipes" [userId]="userId"></app-recipe-tab>
 </div>

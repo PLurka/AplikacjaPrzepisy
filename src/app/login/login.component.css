@@ -10,6 +10,10 @@
   flex-direction: column;
 }
 
-.form-container>* {
+.form-container > * {
   width: 100%;
+}
+
+.button {
+  min-width: fit-content;
 }

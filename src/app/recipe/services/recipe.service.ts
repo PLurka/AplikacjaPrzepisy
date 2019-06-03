@@ -43,6 +43,23 @@ export class RecipeService {
       );
   }
 
+  searchRecipes(
+    page: number,
+    limit: number,
+    input: string
+  ): Observable<object> {
+    return this.httpClient
+      .get(
+        `https://team-recipes.herokuapp.com/search/recipes?page=${page}&limit=${limit}&query=${input}`,
+        this.httpOptions
+      )
+      .pipe(
+        map(response => {
+          return response;
+        })
+      );
+  }
+
   createRecipe(recipe: Recipe): Observable<Object> {
     return this.httpClient.post(
       "https://team-recipes.herokuapp.com/recipes/",
