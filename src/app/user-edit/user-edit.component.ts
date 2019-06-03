@@ -1,4 +1,4 @@
-import { UserService } from './../user/services/user.service';
+import { UserService } from "./../user/services/user.service";
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { MustMatch } from "../helpers/MustMatch";
@@ -35,23 +35,23 @@ export class UserEditComponent implements OnInit {
       {
         validator: MustMatch("password", "confirmPassword")
       }
-      );
+    );
 
-      this.editEmailForm = this.formBuilder.group({
-        email: ["", [Validators.required, Validators.email]]
-      });
-      this.spinner = true;
+    this.editEmailForm = this.formBuilder.group({
+      email: ["", [Validators.required, Validators.email]]
+    });
+    this.spinner = true;
     this.getUser();
   }
 
   getUser() {
-    this.userService.getUser(JSON.parse(localStorage.getItem("user"))["id"]).subscribe(response => {
-      if(response["vege"] == true)
-        this.vege = "Yes";
-      else
-        this.vege = "No";
-      this.spinner = false;
-    });
+    this.userService
+      .getUser(JSON.parse(localStorage.getItem("user"))["id"])
+      .subscribe(response => {
+        if (response["vege"] == true) this.vege = "Yes";
+        else this.vege = "No";
+        this.spinner = false;
+      });
   }
 
   onEditDietSubmit() {

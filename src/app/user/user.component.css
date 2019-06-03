@@ -1,4 +1,4 @@
-.spinner{
+.spinner {
   position: absolute;
   height: 100px;
   width: 100px;
@@ -9,7 +9,7 @@
   background-size: 100%;
 }
 
-.container{
+.container {
   display: flex;
 }
 
@@ -17,33 +17,33 @@ table {
   width: 100%;
 }
 
-.userProfile{
+.userProfile {
   flex: 1;
 }
 
-.userRecipes{
+.userRecipes {
   flex: 2;
 }
 
-.buttons{
+.buttons {
   display: flex;
 }
 
-.editButton{
+.editButton {
   min-width: fit-content;
   flex: 1;
 }
 
-.fridgeButton{
+.fridgeButton {
   min-width: fit-content;
   flex: 1;
 }
 
-.link{
+.link {
   color: white;
   text-decoration: none;
 }
 
-.separator{
+.separator {
   flex: 1;
 }

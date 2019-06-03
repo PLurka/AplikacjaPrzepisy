@@ -44,14 +44,12 @@ export class RecipeTabComponent implements OnInit {
   userId: number;
 
   prevPage() {
-    if (this.actualPage > 0)
-      this.actualPage -= 1;
+    if (this.actualPage > 0) this.actualPage -= 1;
     this.refreshRecipes();
   }
 
   nextPage() {
-    if(this.lastPage == false)
-      this.actualPage += 1;
+    if (this.lastPage == false) this.actualPage += 1;
     this.refreshRecipes();
   }
 
@@ -62,12 +60,9 @@ export class RecipeTabComponent implements OnInit {
   }
 
   refreshRecipes() {
-    if(this.userId == 0)
-      this.getRecipes();
-    else if(this.userId == -1)
-      this.searchRecipes();
-    else
-      this.getUserRecipes(this.userId);
+    if (this.userId == 0) this.getRecipes();
+    else if (this.userId == -1) this.searchRecipes();
+    else this.getUserRecipes(this.userId);
   }
 
   search() {
@@ -79,10 +74,8 @@ export class RecipeTabComponent implements OnInit {
   }
 
   checkLastPage(recipes: Array<object>) {
-    if(recipes.length < this.actualLimit)
-      this.lastPage = true;
-    else
-      this.lastPage = false;
+    if (recipes.length < this.actualLimit) this.lastPage = true;
+    else this.lastPage = false;
   }
 
   allRecipes() {
@@ -94,7 +87,7 @@ export class RecipeTabComponent implements OnInit {
     this.recipeService
       .getRecipes(this.actualPage, this.actualLimit, this.actualSort)
       .subscribe(response => {
-        this.checkLastPage(response["recipes"])
+        this.checkLastPage(response["recipes"]);
         this.recipes = new Array<Recipe>();
         this.recipes = response["recipes"];
         this.dataSource = new MatTableDataSource(this.recipes);
@@ -104,17 +97,19 @@ export class RecipeTabComponent implements OnInit {
 
   getUserRecipes(userId: number) {
     this.spinner = true;
-    this.userService.getUserRecipes(userId, this.actualPage, this.actualLimit).subscribe(response => {
-      console.log(response["recipes"]);
-      console.log(response);
-      this.recipes = new Array<Recipe>();
-      this.recipes = response["recipes"];
-      this.checkLastPage(this.recipes);
-      if (this.recipes.length > 0) {
-        this.dataSource = new MatTableDataSource(this.recipes);
-      }
-      this.spinner = false;
-    });
+    this.userService
+      .getUserRecipes(userId, this.actualPage, this.actualLimit)
+      .subscribe(response => {
+        console.log(response["recipes"]);
+        console.log(response);
+        this.recipes = new Array<Recipe>();
+        this.recipes = response["recipes"];
+        this.checkLastPage(this.recipes);
+        if (this.recipes.length > 0) {
+          this.dataSource = new MatTableDataSource(this.recipes);
+        }
+        this.spinner = false;
+      });
   }
 
   searchRecipes() {
@@ -124,16 +119,18 @@ export class RecipeTabComponent implements OnInit {
       });
     } else {
       this.spinner = true;
-      this.recipeService.searchRecipes(this.actualPage, this.actualLimit, this.input).subscribe(response => {
-        this.checkLastPage(response["recipes"]);
-        this.recipes = new Array<Recipe>();
-        this.recipes = response["recipes"];
-        if (this.recipes.length > 0) {
-          this.dataSource = new MatTableDataSource(this.recipes);
-        }
-        this.spinner = false;
-        this.typeTab = 2;
-      });
+      this.recipeService
+        .searchRecipes(this.actualPage, this.actualLimit, this.input)
+        .subscribe(response => {
+          this.checkLastPage(response["recipes"]);
+          this.recipes = new Array<Recipe>();
+          this.recipes = response["recipes"];
+          if (this.recipes.length > 0) {
+            this.dataSource = new MatTableDataSource(this.recipes);
+          }
+          this.spinner = false;
+          this.typeTab = 2;
+        });
     }
   }
 

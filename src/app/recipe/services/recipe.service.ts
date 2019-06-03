@@ -43,7 +43,11 @@ export class RecipeService {
       );
   }
 
-  searchRecipes(page: number, limit: number, input: string): Observable<object> {
+  searchRecipes(
+    page: number,
+    limit: number,
+    input: string
+  ): Observable<object> {
     return this.httpClient
       .get(
         `https://team-recipes.herokuapp.com/search/recipes?page=${page}&limit=${limit}&query=${input}`,
