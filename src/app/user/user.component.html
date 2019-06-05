@@ -2,16 +2,15 @@
 <mat-spinner *ngIf="spinner == true" class="spinner"></mat-spinner>
 <div class="container" *ngIf="spinner == false">
   <div class="userProfile">
-    <mat-card>
-      <mat-card>
-        <div class="username">Username - {{ user.username }}</div>
-        <div class="uservege">
-          <div *ngIf="user.vege == true">Vegeterian - Yes</div>
-          <div *ngIf="user.vege == false">Vegeterian - No</div>
-        </div>
-      </mat-card>
+    <mat-card style="text-align: center;">
+      <img src="{{'https://team-recipes.herokuapp.com/images/avatars/'+user.avatarPath}}" height="100" width="100"/>
+      <div class="username">Username - {{ user.username }}</div>
+      <div class="uservege">
+        <div *ngIf="user.vege == true">Vegeterian - Yes</div>
+        <div *ngIf="user.vege == false">Vegeterian - No</div>
+      </div>
 
-      <div class="buttons">
+      <div class="buttons" style="margin-top: 10px;">
         <div class="separator"></div>
         <button
           *ngIf="checkUser() == true"
