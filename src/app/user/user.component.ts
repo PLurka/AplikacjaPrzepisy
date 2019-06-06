@@ -33,15 +33,12 @@ export class UserComponent implements OnInit {
   }
 
   checkUser() {
-    console.log(this.userId);
     const logged = JSON.parse(localStorage.getItem('user'))['id'];
-    if (logged == this.userId || logged == 1) { return true; }
-    else { return false; }
+    if (logged == this.userId || logged == 1) { return true; } else { return false; }
   }
 
   validateUser(): boolean {
-    if (this.userId == this.loggedUser['id']) { return true; }
-    else { return false; }
+    if (this.userId == this.loggedUser['id']) { return true; } else { return false; }
   }
 
   getUser(userId: number) {

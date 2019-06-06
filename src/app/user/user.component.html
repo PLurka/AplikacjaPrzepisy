@@ -3,7 +3,12 @@
 <div class="container" *ngIf="spinner == false">
   <div class="userProfile">
     <mat-card style="text-align: center;">
-      <img src="{{'https://team-recipes.herokuapp.com/images/avatars/'+user.avatarPath}}" height="100" width="100"/>
+      <img
+        *ngIf="user.avatarPath"
+        src="{{ user.avatarPath }}"
+        height="100"
+        width="100"
+      />
       <div class="username">Username - {{ user.username }}</div>
       <div class="uservege">
         <div *ngIf="user.vege == true">Vegeterian - Yes</div>

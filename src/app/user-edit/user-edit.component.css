@@ -14,21 +14,7 @@
   text-align: center;
 }
 
-.vegeContainer {
-  display: flex;
-  margin: 10px auto;
-  width: 20%;
-  flex-direction: column;
-}
-
-.passwordContainer {
-  display: flex;
-  margin: 10px auto;
-  width: 20%;
-  flex-direction: column;
-}
-
-.emailContainer {
+.settingsContainer {
   display: flex;
   margin: 10px auto;
   width: 20%;

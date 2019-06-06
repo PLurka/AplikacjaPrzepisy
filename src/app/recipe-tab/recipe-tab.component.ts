@@ -100,8 +100,6 @@ export class RecipeTabComponent implements OnInit {
     this.userService
       .getUserRecipes(userId, this.actualPage, this.actualLimit)
       .subscribe(response => {
-        console.log(response["recipes"]);
-        console.log(response);
         this.recipes = new Array<Recipe>();
         this.recipes = response["recipes"];
         this.checkLastPage(this.recipes);
