@@ -22,7 +22,7 @@
 
     <form class="buttons">
       <button
-        class="button"
+        class="button color"
         mat-flat-button
         color="primary"
         (click)="create()"
@@ -41,7 +41,7 @@
         Edit
       </button>
       <button
-        class="button"
+        class="button color"
         *ngIf="editButton == true"
         mat-flat-button
         color="primary"
@@ -61,7 +61,7 @@
         Delete
       </button>
       <button
-        class="button"
+        class="button color2"
         *ngIf="deleteButton == true"
         mat-flat-button
         color="primary"
@@ -71,7 +71,7 @@
         Delete
       </button>
       <button
-        class="button"
+        class="button color"
         mat-flat-button
         color="primary"
         (click)="submit()"
@@ -97,6 +97,7 @@
       color="primary"
       (click)="getIngredient()"
       style="font-size: 10px"
+      class="color"
     >
       Show ingredient
     </button>
@@ -115,6 +116,7 @@
         color="primary"
         (click)="searchIngredients()"
         style="font-size: 10px"
+        class="color"
       >
         Search
       </button>
@@ -132,7 +134,7 @@
           class="button"
           mat-flat-button
           color="primary"
-          class="spaceBetween"
+          class="spaceBetween color"
           (click)="editListIngredient(ingredient)"
         >
           Edit

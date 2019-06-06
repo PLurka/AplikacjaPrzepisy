@@ -44,3 +44,19 @@
 .button {
   flex: 2;
 }
+
+.color{
+  transition: all 0.3s ease;
+}
+
+.color:hover{
+  background: #FF569A;
+}
+
+.color2{
+  transition: all 0.3s ease;
+}
+
+.color2:hover{
+  background: #FF0050;
+}

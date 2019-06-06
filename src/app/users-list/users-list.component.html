@@ -32,6 +32,7 @@
           mat-flat-button
           color="primary"
           (click)="navigateUser(element.id)"
+          class="color"
         >
           Show User Profile
         </button>
@@ -50,10 +51,11 @@
     mat-flat-button
     color="primary"
     (click)="prevPage()"
+    class="color"
   >
     Previous Page
   </button>
-  <button mat-flat-button color="primary" (click)="nextPage()">
+  <button mat-flat-button color="primary" (click)="nextPage()" class="color">
     Next Page
   </button>
   <mat-form-field class="choose">

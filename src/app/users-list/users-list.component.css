@@ -24,3 +24,11 @@ td {
 .choose {
   padding: 20px;
 }
+
+.color{
+  transition: all 0.3s ease;
+}
+
+.color:hover{
+  background: #FF569A;
+}

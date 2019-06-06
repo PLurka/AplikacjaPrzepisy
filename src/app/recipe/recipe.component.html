@@ -30,8 +30,12 @@
         </mat-card>
       </div>
 
-      <div style="cursor: pointer" class="author" (click)="navigateProfile()">
-        ~{{ recipeCard.user["username"] }}
+      <div class="authorPane">
+        <div class="separator"></div>
+
+        <div style="cursor: pointer" class="author rotate" (click)="navigateProfile()">
+          ~{{ recipeCard.user["username"] }}
+        </div>
       </div>
 
       <div class="buttons">
@@ -41,7 +45,7 @@
           color="primary"
           style="margin: 10px auto; width: fit-content;"
           (click)="openDialog()"
-          class="deleteButton"
+          class="deleteButton color grow"
         >
           Delete recipe
         </button>
@@ -51,7 +55,7 @@
           color="primary"
           style="margin: 10px auto; width: fit-content;"
           (click)="editRecipe()"
-          class="editButton"
+          class="editButton color grow"
         >
           Edit recipe
         </button>

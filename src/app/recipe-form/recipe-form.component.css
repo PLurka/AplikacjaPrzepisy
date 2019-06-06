@@ -78,3 +78,30 @@
 .ingredientSearch {
   flex: 30;
 }
+
+.color{
+  transition: all 0.3s ease;
+}
+
+.color:hover{
+  background: #FF569A;
+}
+
+.color2{
+  transition: all 0.3s ease;
+}
+
+.color2:hover{
+  background: #FF0050;
+}
+
+.shrink{
+  transition: all 0.3s ease;
+}
+
+.shrink:hover
+{
+        -webkit-transform: scale(0.8);
+        -ms-transform: scale(0.8);
+        transform: scale(0.8);
+}

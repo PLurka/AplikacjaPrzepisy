@@ -43,8 +43,17 @@ table {
 }
 
 .fridgeButton {
+  color: primary;
   min-width: fit-content;
   flex: 1;
+}
+
+.fade{
+  transition: all 0.3s ease;
+}
+
+.fade:hover{
+  background: #FF569A;
 }
 
 .link {

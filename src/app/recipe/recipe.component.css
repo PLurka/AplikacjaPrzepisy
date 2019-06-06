@@ -51,8 +51,17 @@
   text-align: center;
 }
 
+.authorPane{
+  display: flex;
+}
+
+.separator{
+  flex: 95;
+}
+
 .author {
   text-align: right;
+  flex: 5;
 }
 
 .buttons {
@@ -72,4 +81,34 @@
 
 .title {
   background-color: blue;
+}
+
+.color{
+  transition: all 0.3s ease;
+}
+
+.color:hover{
+  background: #FF569A;
+}
+
+.grow{
+  transition: all 0.3s ease;
+}
+
+.grow:hover
+{
+        -webkit-transform: scale(1.3);
+        -ms-transform: scale(1.3);
+        transform: scale(1.3);
+}
+
+.rotate{
+  transition: all 0.3s ease;
+}
+
+.rotate:hover
+{
+        -webkit-transform: rotateZ(30deg);
+        -ms-transform: rotateZ(30deg);
+        transform: rotateZ(30deg);
 }

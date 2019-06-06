@@ -22,7 +22,7 @@
           class="inputDescription"
         ></textarea>
       </mat-form-field>
-      <button mat-flat-button color="primary" (click)="createRecipe()">
+      <button mat-flat-button color="primary" (click)="createRecipe()" class="color">
         Add recipe
       </button>
     </form>
@@ -47,7 +47,7 @@
           class="inputDescription"
         ></textarea>
       </mat-form-field>
-      <button mat-flat-button color="primary" (click)="putRecipe(recipe.id)">
+      <button mat-flat-button color="primary" (click)="putRecipe(recipe.id)" class="color">
         Apply changes
       </button>
     </form>
@@ -67,7 +67,7 @@
           <button
             mat-flat-button
             color="primary"
-            class="button"
+            class="button color2 shrink"
             (click)="deleteIngredient(ingredient)"
           >
             -
