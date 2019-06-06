@@ -139,7 +139,7 @@ export class UserEditComponent implements OnInit {
 
   onChangeAvatarSubmit() {
     const formData = new FormData();
-    formData.append('image', this.imgURL.replace('data:image/jpeg;base64,', ''));
+    formData.append('image', this.imgURL.substring(this.imgURL.indexOf(',') + 1));
     this.userEditService.putAvatar(formData).subscribe((res) => {
       this.snackBar.open('Avatar changed!', 'OK', {
         duration: 3000
