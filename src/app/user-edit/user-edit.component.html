@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
 <mat-spinner *ngIf="spinner == true" class="spinner"></mat-spinner>
 <div *ngIf="spinner == false" class="container">
-  <div class="vegeContainer">
+  <div class="settingsContainer">
     <mat-toolbar color="primary">
       <span>Are you vege?</span>
     </mat-toolbar>
@@ -20,9 +20,9 @@
       </mat-card-content>
     </mat-card>
   </div>
-  <div class="passwordContainer">
+  <div class="settingsContainer">
     <mat-toolbar color="primary">
-      <span>Edit password</span>
+      <span>Password</span>
     </mat-toolbar>
     <mat-card>
       <mat-card-content>
@@ -60,9 +60,9 @@
       </mat-card-content>
     </mat-card>
   </div>
-  <div class="emailContainer">
+  <div class="settingsContainer">
     <mat-toolbar color="primary">
-      <span>Edit email</span>
+      <span>Email</span>
     </mat-toolbar>
     <mat-card>
       <mat-card-content>
@@ -87,6 +87,46 @@
             [disabled]="editEmailForm.invalid"
           >
             Set your email
+          </button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="settingsContainer">
+    <mat-toolbar color="primary">
+      <span>Avatar</span>
+    </mat-toolbar>
+    <mat-card>
+      <mat-card-content>
+        <form
+          class="form-container"
+          [formGroup]="changeAvatarForm"
+          (ngSubmit)="onChangeAvatarSubmit()"
+        >
+          <button
+            type="button"
+            mat-raised-button
+            color="accent"
+            (click)="imgFileInput.click()"
+          >
+            Choose a photo
+          </button>
+          <input
+            hidden
+            type="file"
+            #imgFileInput
+            formControlName="fileInput"
+            (change)="previewImage(imgFileInput.files)"
+          />
+          <img [src]="imgURL" style="margin-top:10px;" *ngIf="imgURL" />
+          <button
+            mat-raised-button
+            color="primary"
+            type="submit"
+            style="margin: 10px auto; width: fit-content;"
+            [disabled]="imgURL === null"
+          >
+            Change avatar
           </button>
         </form>
       </mat-card-content>
