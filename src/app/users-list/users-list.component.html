@@ -2,11 +2,6 @@
 <mat-spinner *ngIf="spinner == true" class="spinner"></mat-spinner>
 <div *ngIf="spinner == false">
   <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
-    <!-- <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
-      <td mat-cell *matCellDef="let element">{{ element.id }}</td>
-    </ng-container> -->
-
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef mat-header>Id</th>
       <td mat-cell *matCellDef="let element">{{ element.id }}</td>
@@ -55,25 +50,24 @@
   >
     Previous Page
   </button>
-  <button mat-flat-button color="primary" (click)="nextPage()" class="color">
+  <button *ngIf="lastPage == true" mat-flat-button color="primary" disabled>
+    Next Page
+  </button>
+  <button
+    *ngIf="lastPage == false"
+    mat-flat-button
+    color="primary"
+    (click)="nextPage()"
+    class="color"
+  >
     Next Page
   </button>
   <mat-form-field class="choose">
     <mat-label>Limit on page</mat-label>
     <mat-select [(value)]="actualLimit">
-      <mat-option value="10" (click)="getUsers()">10</mat-option>
-      <mat-option value="20" (click)="getUsers()">20</mat-option>
-      <mat-option value="50" (click)="getUsers()">50</mat-option>
+      <mat-option value="10" (click)="refresh()">10</mat-option>
+      <mat-option value="20" (click)="refresh()">20</mat-option>
+      <mat-option value="50" (click)="refresh()">50</mat-option>
     </mat-select>
   </mat-form-field>
-  <!-- <mat-form-field>
-    <mat-label>Sort by</mat-label>
-    <mat-select [(value)]="actualSort">
-      <mat-option value="Title" (click)="getRecipes()">Title</mat-option>
-      <mat-option value="Vege" (click)="getRecipes()">Vege</mat-option>
-      <mat-option value="Ingredients" (click)="getRecipes()"
-        >Ingredients</mat-option
-      >
-    </mat-select>
-  </mat-form-field> -->
 </div>

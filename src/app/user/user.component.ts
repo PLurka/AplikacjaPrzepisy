@@ -42,8 +42,8 @@ export class UserComponent implements OnInit {
   }
 
   getUser(userId: number) {
-    this.userService.getUser(userId).subscribe(res => {
-      this.user = res;
+    this.userService.getUser(userId).subscribe(response => {
+      this.user = new User(response);
       this.spinner = false;
     });
   }

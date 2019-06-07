@@ -12,6 +12,6 @@ export class GoodbyeComponent implements OnInit {
   ngOnInit() {}
 
   login() {
-    this.router.navigate(["/login"], { queryParams: {} });
+    this.router.navigate(["/login"]);
   }
 }

@@ -4,7 +4,6 @@ import { Recipe } from "../recipe/recipe";
 import { RecipeService } from "../recipe/services/recipe.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { MatSnackBar } from "@angular/material";
-import { User } from "../user/user";
 
 @Component({
   selector: "app-recipe-form",
@@ -12,7 +11,7 @@ import { User } from "../user/user";
   styleUrls: ["./recipe-form.component.css"]
 })
 export class RecipeFormComponent implements OnInit {
-  recipe: Recipe = new Recipe();
+  recipe: Recipe;
   typeForm: number;
   spinner: boolean;
 
@@ -29,6 +28,8 @@ export class RecipeFormComponent implements OnInit {
         this.getRecipe(params["recipeId"]);
         this.spinner = true;
       } else {
+        this.recipe = new Recipe();
+        this.recipe.ingredients = new Array<Ingredient>();
         this.spinner = false;
       }
       this.typeForm = params["typeForm"];
@@ -67,17 +68,8 @@ export class RecipeFormComponent implements OnInit {
   }
 
   getRecipe(recipeId: string) {
-    this.recipeService.getRecipe(recipeId).subscribe(res => {
-      this.recipe.id = res["id"];
-      this.recipe.description = res["description"];
-      this.recipe.title = res["title"];
-      this.recipe.vege = res["vege"];
-      for (let i = 0; i < res["ingredients"].length; i++) {
-        this.recipe.ingredients[i] = new Ingredient();
-        this.recipe.ingredients[i] = res["ingredients"][i]["ingredient"];
-      }
-      this.recipe.user = new User();
-      this.recipe.user = res["user"];
+    this.recipeService.getRecipe(recipeId).subscribe(response => {
+      this.recipe = new Recipe(response);
       this.spinner = false;
     });
   }
@@ -100,7 +92,6 @@ export class RecipeFormComponent implements OnInit {
       this.spinner = true;
       this.recipe.vege = this.checkVege();
       this.recipeService.createRecipe(this.recipe).subscribe(response => {
-        this.recipe = new Recipe();
         this.snackBar.open("Recipe created successfully!", "OK", {
           duration: 3000
         });
@@ -129,7 +120,6 @@ export class RecipeFormComponent implements OnInit {
       this.recipeService
         .putRecipe(recipeId, this.recipe)
         .subscribe(response => {
-          this.recipe = new Recipe();
           this.snackBar.open("Recipe updated successfully!", "OK", {
             duration: 3000
           });

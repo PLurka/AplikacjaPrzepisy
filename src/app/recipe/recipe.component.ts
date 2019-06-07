@@ -1,4 +1,3 @@
-import { Ingredient } from "./../ingredient/ingredient";
 import { Component, OnInit } from "@angular/core";
 import { LoginService } from "../login/services/login.service";
 import { Recipe } from "./recipe";
@@ -6,7 +5,6 @@ import { RecipeService } from "./services/recipe.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { MatSnackBar, MatDialog } from "@angular/material";
 import { ConfirmationDialogComponent } from "../confirmation-dialog/confirmation-dialog.component";
-import { User } from "../user/user";
 
 @Component({
   selector: "app-recipe",
@@ -53,18 +51,8 @@ export class RecipeComponent implements OnInit {
   }
 
   getRecipe(recipeId: string) {
-    this.recipeCard = new Recipe();
-    this.recipeService.getRecipe(recipeId).subscribe(res => {
-      this.recipeCard.id = res["id"];
-      this.recipeCard.description = res["description"];
-      this.recipeCard.title = res["title"];
-      this.recipeCard.vege = res["vege"];
-      for (let i = 0; i < res["ingredients"].length; i++) {
-        this.recipeCard.ingredients[i] = new Ingredient();
-        this.recipeCard.ingredients[i] = res["ingredients"][i]["ingredient"];
-      }
-      this.recipeCard.user = new User();
-      this.recipeCard.user = res["user"];
+    this.recipeService.getRecipe(recipeId).subscribe(response => {
+      this.recipeCard = new Recipe(response);
       this.spinner = false;
     });
   }
@@ -73,14 +61,10 @@ export class RecipeComponent implements OnInit {
     this.spinner = true;
     this.recipeService.deleteRecipe(recipeId).subscribe(
       response => {
-        this.recipeCard = new Recipe();
         this.snackBar.open("Recipe deleted successfully!", "OK", {
           duration: 3000
         });
         this.router.navigate(["/recipes"], { queryParams: { userId: 0 } });
-      },
-      error => {
-        console.log(error);
       }
     );
   }

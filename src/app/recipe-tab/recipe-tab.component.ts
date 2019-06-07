@@ -18,7 +18,6 @@ export class RecipeTabComponent implements OnInit {
   actualLimit: number;
   actualSort: string;
   recipes;
-  recipeCard: Recipe = new Recipe();
   dataSource;
   typeTab: number;
   displayedColumns: string[] = ["title", "vege", "author", "show"];

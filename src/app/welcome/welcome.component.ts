@@ -12,10 +12,10 @@ export class WelcomeComponent implements OnInit {
   ngOnInit() {}
 
   login() {
-    this.router.navigate(["/login"], { queryParams: {} });
+    this.router.navigate(["/login"]);
   }
 
   register() {
-    this.router.navigate(["/register"], { queryParams: {} });
+    this.router.navigate(["/register"]);
   }
 }

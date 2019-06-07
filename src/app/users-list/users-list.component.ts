@@ -10,6 +10,7 @@ import { MatTableDataSource } from "@angular/material";
   styleUrls: ["./users-list.component.css"]
 })
 export class UsersListComponent implements OnInit {
+  lastPage: boolean;
   loggedUser;
   dataSource;
   users;
@@ -26,6 +27,11 @@ export class UsersListComponent implements OnInit {
     this.getUsers();
   }
 
+  checkLastPage(recipes: Array<object>) {
+    if (recipes.length < this.actualLimit) this.lastPage = true;
+    else this.lastPage = false;
+  }
+
   prevPage() {
     if (this.actualPage > 0) this.actualPage -= 1;
     this.getUsers();
@@ -33,6 +39,11 @@ export class UsersListComponent implements OnInit {
 
   nextPage() {
     this.actualPage += 1;
+    this.getUsers();
+  }
+
+  refresh(){
+    this.actualPage = 0;
     this.getUsers();
   }
 
@@ -44,6 +55,7 @@ export class UsersListComponent implements OnInit {
         this.users = new Array<User>();
         this.users = res;
         this.dataSource = new MatTableDataSource(this.users);
+        this.checkLastPage(this.users);
         this.spinner = false;
       });
   }

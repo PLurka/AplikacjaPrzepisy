@@ -69,9 +69,7 @@ export class IngredientsPageComponent implements OnInit {
     } else {
       this.ingredientService.getIngredient(this.inputIdIngredient).subscribe(
         response => {
-          this.ingredient.id = response["id"];
-          this.ingredient.name = response["name"];
-          this.ingredient.vege = response["vege"];
+          this.ingredient = new Ingredient(response);
           this.takenIngredient = this.ingredient;
           this.editButton = true;
           this.createEdit = false;

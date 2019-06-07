@@ -23,7 +23,11 @@ export class NavbarComponent implements OnInit {
   }
 
   navigateRecipes() {
-    this.router.navigate(["/recipes"], { queryParams: { userId: 0 } });
+    let url = window.location.href;
+    if(url.substr(url.length - 16) == 'recipes?userId=0')
+      window.location.reload();
+    else
+      this.router.navigate(["/recipes"], { queryParams: { userId: 0 } });
   }
 
   navigateForm() {

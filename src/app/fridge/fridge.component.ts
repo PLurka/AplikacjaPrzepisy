@@ -32,7 +32,6 @@ export class FridgeComponent implements OnInit {
   ngOnInit() {
     this.spinner = true;
     this.recipes = false;
-    this.fridge = new Fridge();
     this.getFridge();
     this.dataSource = new MatTableDataSource(this.fridgeRecipes);
   }
@@ -106,11 +105,7 @@ export class FridgeComponent implements OnInit {
 
   getFridge() {
     this.fridgeService.getFridge().subscribe(response => {
-      this.fridge.ingredients = new Array<Ingredient>();
-      for (let i = 0; i < response["ingredients"].length; i++) {
-        this.fridge.ingredients[i] = new Ingredient();
-        this.fridge.ingredients[i] = response["ingredients"][i]["ingredient"];
-      }
+      this.fridge = new Fridge(response);
       this.recipes = false;
       this.spinner = false;
     });
