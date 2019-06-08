@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { map } from "rxjs/operators";
-import { environment } from "src/environments/environment";
+import { environment } from "../../../../src/environments/environment";
 import { LoginResponse } from "../models/LoginResponse";
 
 @Injectable({

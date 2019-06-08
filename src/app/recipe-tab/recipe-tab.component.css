@@ -52,3 +52,11 @@ td {
 .color:hover{
   background: #FF569A;
 }
+
+.textColor{
+  transition: all 0.3s ease;
+}
+
+.textColor:hover{
+  color: #FF569A;
+}
