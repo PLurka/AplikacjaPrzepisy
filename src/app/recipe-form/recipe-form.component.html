@@ -64,38 +64,6 @@
     </form>
   </div>
 
-  <div *ngIf="spinner == false">
-    <button
-      type="button"
-      mat-raised-button
-      color="accent"
-      (click)="imgFileInput.click()"
-    >
-      Choose recipe image
-    </button>
-    <input
-      hidden
-      type="file"
-      #imgFileInput
-      (change)="previewImage(imgFileInput.files)"
-    />
-    <img
-      [src]="imgURL"
-      style="margin-top:10px; width: fit-content; max-width: 100px;"
-      *ngIf="imgURL"
-    />
-    <button
-      *ngIf="imgURL"
-      mat-raised-button
-      color="primary"
-      type="submit"
-      style="margin: 10px auto; width: fit-content;"
-      (click)="imgURL = null"
-    >
-      Delete image
-    </button>
-  </div>
-
   <div class="ingredientsOuter" *ngIf="spinner == false">
     <div class="ingredientsTitle">INGREDIENTS</div>
     <div class="ingredients">
@@ -125,4 +93,47 @@
       </div>
     </div>
   </div>
+
+  <div *ngIf="spinner == false" class="imageBoard">
+        <input
+      hidden
+      type="file"
+      #imgFileInput
+      (change)="previewImage(imgFileInput.files)"
+      class="imageInput"
+    />
+    <img
+      [src]="imgURL"
+      style="margin-top:10px; width: fit-content; max-width: 100px;"
+      *ngIf="imgURL"
+      class="image"
+    />
+
+    <div class="buttons">
+      <button
+        type="button"
+        mat-raised-button
+        color="primary"
+        type="submit"
+        style="margin: 10px auto; width: fit-content;"
+        (click)="imgFileInput.click()"
+        class="imageButton color"
+      >
+        Choose recipe image
+      </button>
+      <button
+        *ngIf="imgURL"
+        mat-raised-button
+        color="primary"
+        type="submit"
+        style="margin: 10px auto; width: fit-content;"
+        (click)="imgURL = null"
+        class="imageDelete color2"
+      >
+        Delete image
+      </button>
+    </div>
+
+  </div>
+
 </div>
