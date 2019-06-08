@@ -14,6 +14,8 @@ export class RecipeFormComponent implements OnInit {
   recipe: Recipe;
   typeForm: number;
   spinner: boolean;
+  recipeImage: string;
+  imgURL: any = null;
 
   constructor(
     private recipeService: RecipeService,
@@ -70,6 +72,7 @@ export class RecipeFormComponent implements OnInit {
   getRecipe(recipeId: string) {
     this.recipeService.getRecipe(recipeId).subscribe(response => {
       this.recipe = new Recipe(response);
+      this.imgURL = this.recipe.imgPath;
       this.spinner = false;
     });
   }
@@ -90,13 +93,32 @@ export class RecipeFormComponent implements OnInit {
       );
     } else {
       this.spinner = true;
-      this.recipe.vege = this.checkVege();
-      this.recipeService.createRecipe(this.recipe).subscribe(response => {
-        this.snackBar.open("Recipe created successfully!", "OK", {
-          duration: 3000
+      if (this.imgURL == null) {
+        this.recipe.imgPath = null;
+        this.recipe.vege = this.checkVege();
+        this.recipeService.createRecipe(this.recipe).subscribe(response => {
+          this.snackBar.open("Recipe created successfully!", "OK", {
+            duration: 3000
+          });
+          this.router.navigate(["/"]);
         });
-        this.router.navigate(["/"]);
-      });
+      } else {
+        const formData = new FormData();
+        formData.append(
+          "image",
+          this.imgURL.substring(this.imgURL.indexOf(",") + 1)
+        );
+        this.recipeService.putImage(formData).subscribe((response: any) => {
+          this.recipe.imgPath = String(response.link);
+          this.recipe.vege = this.checkVege();
+          this.recipeService.createRecipe(this.recipe).subscribe(response => {
+            this.snackBar.open("Recipe created successfully!", "OK", {
+              duration: 3000
+            });
+            this.router.navigate(["/"]);
+          });
+        });
+      }
     }
   }
 
@@ -116,15 +138,58 @@ export class RecipeFormComponent implements OnInit {
       );
     } else {
       this.spinner = true;
-      this.recipe.vege = this.checkVege();
-      this.recipeService
-        .putRecipe(recipeId, this.recipe)
-        .subscribe(response => {
-          this.snackBar.open("Recipe updated successfully!", "OK", {
-            duration: 3000
+      if (this.imgURL == null) {
+        this.recipe.imgPath = null;
+        this.recipe.vege = this.checkVege();
+        this.recipeService
+          .putRecipe(recipeId, this.recipe)
+          .subscribe(response => {
+            this.snackBar.open("Recipe updated successfully!", "OK", {
+              duration: 3000
+            });
+            this.router.navigate(["/recipe"], {
+              queryParams: { id: recipeId }
+            });
           });
-          this.router.navigate(["/recipe"], { queryParams: { id: recipeId } });
+      } else {
+        const formData = new FormData();
+        formData.append(
+          "image",
+          this.imgURL.substring(this.imgURL.indexOf(",") + 1)
+        );
+        this.recipeService.putImage(formData).subscribe((response: any) => {
+          this.recipe.imgPath = String(response.link);
+          this.recipe.vege = this.checkVege();
+          this.recipeService
+            .putRecipe(recipeId, this.recipe)
+            .subscribe(response => {
+              this.snackBar.open("Recipe updated successfully!", "OK", {
+                duration: 3000
+              });
+              this.router.navigate(["/recipe"], {
+                queryParams: { id: recipeId }
+              });
+            });
         });
+      }
     }
+  }
+
+  previewImage(files) {
+    if (files.length === 0) {
+      this.imgURL = null;
+      return;
+    }
+    const mimeType = files[0].type;
+    if (mimeType.match(/image\/*/) == null) {
+      this.imgURL = null;
+      return;
+    }
+    const reader = new FileReader();
+    this.recipeImage = files;
+    reader.readAsDataURL(files[0]);
+    reader.onload = _event => {
+      this.imgURL = reader.result;
+    };
   }
 }

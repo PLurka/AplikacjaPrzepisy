@@ -59,14 +59,12 @@ export class RecipeComponent implements OnInit {
 
   deleteRecipe(recipeId: string) {
     this.spinner = true;
-    this.recipeService.deleteRecipe(recipeId).subscribe(
-      response => {
-        this.snackBar.open("Recipe deleted successfully!", "OK", {
-          duration: 3000
-        });
-        this.router.navigate(["/"]);
-      }
-    );
+    this.recipeService.deleteRecipe(recipeId).subscribe(response => {
+      this.snackBar.open("Recipe deleted successfully!", "OK", {
+        duration: 3000
+      });
+      this.router.navigate(["/"]);
+    });
   }
 
   editRecipe() {

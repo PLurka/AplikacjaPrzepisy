@@ -10,8 +10,10 @@
       <div class="separator"></div>
 
       <img
-        class="image"
-        src="https://r-scale-a4.dcs.redcdn.pl/scale/o2/tvn/web-content/m/p96/i/dfd7468ac613286cdbb40872c8ef3b06/e7c4f1e4-a075-11e2-9b34-0025b511229e.jpg?type=1&srcmode=0&srcx=42%2F100&srcy=580%2F1000&srcw=95%2F100&srch=39%2F100&dstw=640&dsth=360&quality=85"
+        *ngIf="recipeCard.imgPath"
+        src="{{ recipeCard.imgPath }}"
+        height="300"
+        width="400"
       />
 
       <div class="inside">
