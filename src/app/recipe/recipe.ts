@@ -12,6 +12,7 @@ export class Recipe {
       for (let i = 0; i < recipe["ingredients"].length; i++)
         this.ingredients[i] = new Ingredient(recipe["ingredients"][i]["ingredient"]);
       this.user = new User(recipe["user"]);
+      this.imgPath = recipe["imgPath"];
     }
   }
   id: string;
@@ -20,4 +21,5 @@ export class Recipe {
   description: string;
   ingredients: Ingredient[];
   user: User;
+  imgPath: string;
 }

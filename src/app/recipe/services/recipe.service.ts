@@ -82,4 +82,21 @@ export class RecipeService {
       this.httpOptions
     );
   }
+
+  putImage(formData): Observable<object> {
+    const options = {
+      headers: new HttpHeaders({
+        Authorization: "Client-ID 8e29654c3649aea"
+      }),
+      mimeType: "multipart/form-data",
+      contentType: false
+    };
+    return this.httpClient
+      .post("https://api.imgur.com/3/image", formData, options)
+      .pipe(
+        map((response: any) => {
+          return response.data;
+        })
+      );
+  }
 }

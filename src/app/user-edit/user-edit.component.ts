@@ -1,17 +1,17 @@
-import { UserService } from './../user/services/user.service';
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { MustMatch } from '../helpers/MustMatch';
-import { MatSnackBar } from '@angular/material';
-import { first } from 'rxjs/operators';
-import { HttpErrorResponse } from '@angular/common/http';
-import { UserEditService } from './services.ts/user-edit.service';
-import { Router } from '@angular/router';
+import { UserService } from "./../user/services/user.service";
+import { Component, OnInit } from "@angular/core";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { MustMatch } from "../helpers/MustMatch";
+import { MatSnackBar } from "@angular/material";
+import { first } from "rxjs/operators";
+import { HttpErrorResponse } from "@angular/common/http";
+import { UserEditService } from "./services.ts/user-edit.service";
+import { Router } from "@angular/router";
 
 @Component({
-  selector: 'app-user-edit',
-  templateUrl: './user-edit.component.html',
-  styleUrls: ['./user-edit.component.css']
+  selector: "app-user-edit",
+  templateUrl: "./user-edit.component.html",
+  styleUrls: ["./user-edit.component.css"]
 })
 export class UserEditComponent implements OnInit {
   diet: Diet;
@@ -29,23 +29,23 @@ export class UserEditComponent implements OnInit {
     private userService: UserService,
     private snackBar: MatSnackBar,
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.editPasswordForm = this.formBuilder.group(
       {
-        password: ['', [Validators.required]],
-        confirmPassword: ['', [Validators.required]]
+        password: ["", [Validators.required]],
+        confirmPassword: ["", [Validators.required]]
       },
       {
-        validator: MustMatch('password', 'confirmPassword')
+        validator: MustMatch("password", "confirmPassword")
       }
     );
     this.editEmailForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]]
+      email: ["", [Validators.required, Validators.email]]
     });
     this.changeAvatarForm = this.formBuilder.group({
-      fileInput: ['', [Validators.required]]
+      fileInput: ["", [Validators.required]]
     });
     this.spinner = true;
     this.getUser();
@@ -64,35 +64,43 @@ export class UserEditComponent implements OnInit {
     const reader = new FileReader();
     this.avatar = files;
     reader.readAsDataURL(files[0]);
-    reader.onload = (_event) => {
+    reader.onload = _event => {
       this.imgURL = reader.result;
     };
   }
 
   getUser() {
     this.userService
-      .getUser(JSON.parse(localStorage.getItem('user'))['id'])
+      .getUser(JSON.parse(localStorage.getItem("user"))["id"])
       .subscribe(response => {
-        if (response['vege'] === true) { this.vege = 'Yes'; } else { this.vege = 'No'; }
+        if (response["vege"] === true) {
+          this.vege = "Yes";
+        } else {
+          this.vege = "No";
+        }
         this.spinner = false;
       });
   }
 
   onEditDietSubmit() {
     this.diet = new Diet();
-    if (this.vege === 'Yes') { this.diet.diet = true; } else { this.diet.diet = false; }
+    if (this.vege === "Yes") {
+      this.diet.diet = true;
+    } else {
+      this.diet.diet = false;
+    }
     this.userEditService
       .putDiet(this.diet)
       .pipe(first())
       .subscribe(
         response => {
-          this.snackBar.open('Successfully changed your diet!', 'OK', {
+          this.snackBar.open("Successfully changed your diet!", "OK", {
             duration: 3000
           });
           this.getUser();
         },
         (error: HttpErrorResponse) => {
-          this.snackBar.open(error.error.message, 'OK', {
+          this.snackBar.open(error.error.message, "OK", {
             duration: 3000
           });
         }
@@ -106,12 +114,12 @@ export class UserEditComponent implements OnInit {
       .pipe(first())
       .subscribe(
         response => {
-          this.snackBar.open('Successfully changed your password!', 'OK', {
+          this.snackBar.open("Successfully changed your password!", "OK", {
             duration: 3000
           });
         },
         (error: HttpErrorResponse) => {
-          this.snackBar.open(error.error.message, 'OK', {
+          this.snackBar.open(error.error.message, "OK", {
             duration: 3000
           });
         }
@@ -125,12 +133,12 @@ export class UserEditComponent implements OnInit {
       .pipe(first())
       .subscribe(
         response => {
-          this.snackBar.open('Successfully changed your email!', 'OK', {
+          this.snackBar.open("Successfully changed your email!", "OK", {
             duration: 3000
           });
         },
         (error: HttpErrorResponse) => {
-          this.snackBar.open(error.error.message, 'OK', {
+          this.snackBar.open(error.error.message, "OK", {
             duration: 3000
           });
         }
@@ -139,18 +147,23 @@ export class UserEditComponent implements OnInit {
 
   onChangeAvatarSubmit() {
     const formData = new FormData();
-    formData.append('image', this.imgURL.substring(this.imgURL.indexOf(',') + 1));
-    this.userEditService.putAvatar(formData).subscribe((res) => {
-      this.snackBar.open('Avatar changed!', 'OK', {
-        duration: 3000
-      });
-      this.router.navigate(['/']);
-    },
-      (error: HttpErrorResponse) => {
-        this.snackBar.open(error.error.message, 'OK', {
+    formData.append(
+      "image",
+      this.imgURL.substring(this.imgURL.indexOf(",") + 1)
+    );
+    this.userEditService.putAvatar(formData).subscribe(
+      res => {
+        this.snackBar.open("Avatar changed!", "OK", {
           duration: 3000
         });
-      });
+        this.router.navigate(["/"]);
+      },
+      (error: HttpErrorResponse) => {
+        this.snackBar.open(error.error.message, "OK", {
+          duration: 3000
+        });
+      }
+    );
   }
 }
 
