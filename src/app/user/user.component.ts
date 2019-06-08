@@ -34,7 +34,7 @@ export class UserComponent implements OnInit {
 
   checkUser() {
     const logged = JSON.parse(localStorage.getItem('user'))['id'];
-    if (logged == this.userId || logged == 1) { return true; } else { return false; }
+    if (logged == this.userId) { return true; } else { return false; }
   }
 
   validateUser(): boolean {
